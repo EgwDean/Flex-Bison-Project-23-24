@@ -1,0 +1,147 @@
+<program> ::= <c> <public_class> <c> | <c> <public_class> <c> <program>
+
+<public_class> ::= <c> “public class” <capital_identifier> “{“ <class_block> “}” <c>
+
+<class_block> ::= <variable_declarations><method_declarations><nested_class>
+
+<nested_class> ::= <c> <public_class> <c> | “”
+
+<variable_declarations> ::= <c> <variable_declaration> <c>
+ | <c> <variable_declaration> <c> <variable_declarations>
+ |  “”
+
+<variable declaration> ::= <variable_modifier><data_type><identifier> “;” 
+			| <variable_modifier> <data_type> <identifier> “=” <literal> <extra_variables> “;”
+			| <capital_identifier><identifier> “=” “new” <capital identifier> “(““)””;”
+
+<extra_variables>::= “,” <identifier> “=” <literal>
+			| “,” <identifier> “=” <literal> <extra_variables>
+			| “”			
+
+<method_declarations> ::= <c> <method_declaration> <c> | <method_declaration> <method_declarations> | “”
+
+<method_declaration> ::= <method_modifier><return_type><identifier>  “(“ <parameters> “)” “{“       <method_block><return> “}”
+
+<paramaters> ::= <data_type><identifier>
+| <data_type><identifier> “,” <parameters>
+| “”
+
+<method_block> = <c> <variable_declarations> <c> <commands> <c>
+<commands> ::= <c> <command> <c> | <c> <command> <c> <commands> | “”
+
+<command> ::= <assignment> | <do_loop> | <for_loop> | <if_else> | <switch_case> | <print> | <break> | <method_call> 
+
+
+<assignment> ::= <identifier> “=” <expression>
+
+<expression> ::= <method_call> | <literal>“;”| <object_instance> | <operations>“;”| <member_access>
+
+<member_access> ::= <identifier>”.”<identifier> “(”<arguments>”)” “;” 
+      | <identifier> ”.” <identifier>  “;”
+
+<method_call> ::= <identifier> “(”<arguments>”)” “;” 
+| <identifier>”.”<identifier> “(”<arguments>”)” “;”
+
+<arguments> ::= <literal> | <literal> “,” <arguments> | <identifier> | <identifier> “,” <arguments>
+
+<object_instance> ::= “new” <capital identifier> “(“ “)” ”;”
+
+<operations> ::= <literal><operator_symbol><operations> | <literal>
+		| <identifier><operator_symbol><operations> | <identifier>
+
+<operator_symbol> ::= “-” | “*” | “/” | “+”
+
+<do_loop> ::= “do” “{“ <commands> ”}” “while” “(“<conditions>“)” “;”
+
+<conditions> ::= <condition> | <condition><logic_operator><conditions>
+
+<condition> ::= <literal><compare_symbol><identifier>
+		| <identifier><compare_symbol><identifier>
+		| <literal><compare_symbol><literal>
+		| <identifier><compare_symbol><literal>
+
+<compare_symbol> ::= “>” | “<” | “==” | “!=”
+
+<logic_operators> ::= “&&” | “||” 
+
+
+<for_loop> ::= “for” “(“ <for_assignment> “;” <conditions> “;” <increment> “)” “{” <commands> “}”
+
+<for_assignment> ::= <identifier> “=” <literal>| <identifier> “=” <identifier>
+
+<increment> ::= <identifier> “=” <identifier><operator_symbol><literal>
+	| <identifier> “=” <identifier><operator_symbol><identifier>
+
+<if_else> ::= “if” “(” <conditions> “)” “{” <commands> “}” <else_if> <else>
+
+<else_if>::=  “else if” “(” <conditions> “)” “{” <commands> “}”
+		| “else if” “(” <conditions> “)” “{” <commands> “}”  <else_if>
+		| “”
+
+<else>: “else” “{” <commands> “}” | “”
+
+<switch_case> ::= “switch” “(” <identifier> ”)” “{” <cases> “default:” <commands> “}”
+|“switch” “(” <identifier> ”)” “{” <cases> “}”
+
+
+<cases> ::= “case” <literal> “:” | “case” <literal> “:” <cases>
+
+<print> ::= “out.print” “(“ <text><variables> “)” “;” 
+
+<text> = <string_literal>
+
+<variables> ::= “,” <identifier> | “,” <identifier><variables> | “”
+
+<return> ::= “return” <literal> “;” | “return” <identifier> “;” | “return” <operations> “;”
+	| “return” <method_call>  | “return” <member_access>
+
+<break> ::= “break” “;”
+
+<variable_modifier> ::= “public” | “private” | “”
+
+<data_type> ::= "int" | "char" | "double" | "boolean" | "String"
+
+<return_type> ::= <data_type> | <void>
+
+<literal> ::= <integer_literal> | <char_literal> | <double_literal> | <boolean_literal> | <string_literal>
+
+<integer_literal> ::= <digit> | <digit><integer_literal>
+
+<double_literal> ::= <integer_literal> “.” <integer_literal> “d”
+
+<boolean_literal> ::= "true" | "false"
+
+<string_literal> ::= “”” <char>“”” | “”” <char><string_literal>“””
+
+<char_literal> ::= “‘”<symbol>“’” | “’” <escape_sequence>“’” | “’” <letter>”’” | “’” <digit>“’”
+
+<char> ::= <symbol> | <escape_sequence> | <letter> | <digit>
+
+<symbol> ::= '+' | '-' | '*' | '/' | '%' | '=' | '&' | '|' | '^' | '~' | '!' | '<' | '>' | '?' | ':' | ';' | ',' | '.' | '(' | ')' | '[' | ']' | '{' | '}' | '#' | '_' | '$' | '@' |
+
+<escape_sequence> ::= '\n' | '\t' | '\r' | '\\' | '\'' | '\"' | '\a' | '\b' | '\f' | '\v' | '\?' | '\0' | '\x' 
+
+<identifier> ::= <identifier_head><identifier_body>
+
+<identifier_head> ::= “_” | <letter>
+
+<identifier_body> ::= <identifier_head> | <digit> | <identifier_head><identifier_body>
+| <digit><identifier_body> | “”
+
+<capital_identifier> ::= <capital_letter><identifier_body>
+
+<letter> ::= <lowercase_letter> | <capital_letter>
+
+<lowercase_letter> ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+
+<capital_letter> ::= 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+
+<digit> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+
+<c> ::= <comment> | “”
+
+<comment> ::= <one_line_comment> | <multiple_line_comment>
+
+<one_line_comment> :== “//” <string_literal>
+
+<multiple_line_comment> ::= “/*” <string_literal> “*/”
