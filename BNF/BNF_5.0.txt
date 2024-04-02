@@ -1,8 +1,8 @@
 <program> ::= <c> <public_class> <c> | <c> <public_class> <c> <program>
 
-<public_class> ::= <c> “public class” <capital_identifier> “{“ <class_block> “}” <c>
+<public_class> ::= “public class” <capital_identifier> “{“ <class_block> “}”
 
-<class_block> ::= <variable_declarations><method_declarations><nested_class>
+<class_block> ::= <variable_declarations> <method_declarations> <nested_class>
 
 <nested_class> ::= <c> <public_class> <c> | “”
 
@@ -18,15 +18,16 @@
 			| “,” <identifier> “=” <literal> <extra_variables>
 			| “”			
 
-<method_declarations> ::= <c> <method_declaration> <c> | <method_declaration> <method_declarations> | “”
+<method_declarations> ::= <c> <method_declaration> <c> | <c> <method_declaration> <c> <method_declarations> | “”
 
-<method_declaration> ::= <method_modifier><return_type><identifier>  “(“ <parameters> “)” “{“       <method_block><return> “}”
+<method_declaration> ::= <method_modifier> <return_type> <identifier> “(“ <parameters> “)” “{“ <method_block> <return> “}”
 
 <paramaters> ::= <data_type><identifier>
 | <data_type><identifier> “,” <parameters>
 | “”
 
-<method_block> = <c> <variable_declarations> <c> <commands> <c>
+<method_block> = <variable_declarations> <commands>
+
 <commands> ::= <c> <command> <c> | <c> <command> <c> <commands> | “”
 
 <command> ::= <assignment> | <do_loop> | <for_loop> | <if_else> | <switch_case> | <print> | <break> | <method_call> 
