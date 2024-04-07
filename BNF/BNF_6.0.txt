@@ -6,13 +6,13 @@
 
 <nested_class> ::= <c> <public_class> <c> | “”
 
-<variable_declarations> ::= <c> <variable_declaration> <c>
- | <c> <variable_declaration> <c> <variable_declarations>
+<variable_declarations> ::= <variable_declaration>
+ | <variable_declaration> <variable_declarations>
  |  “”
 
-<variable declaration> ::= <variable_modifier><data_type><identifier> “;” 
-			| <variable_modifier> <data_type> <identifier> “=” <literal> <extra_variables> “;”
-			| <capital_identifier><identifier> “=” “new” <capital identifier> “(““)””;”
+<variable declaration> ::= <c> <variable_modifier><data_type><identifier> “;” <c>
+			| <c> <variable_modifier> <data_type> <identifier> “=” <literal> <extra_variables> “;” <c>
+			| <c> <capital_identifier><identifier> “=” “new” <capital identifier> “(““)””;” <c>
 
 <extra_variables>::= “,” <identifier> “=” <literal>
 			| “,” <identifier> “=” <literal> <extra_variables>
@@ -52,7 +52,7 @@
 
 <operator_symbol> ::= “-” | “*” | “/” | “+”
 
-<do_loop> ::= “do” “{“ <commands> ”}” “while” “(“<conditions>“)” “;”
+<do_loop> ::= “do” <c> “{“ <commands> ”}” <c> “while” “(“<conditions>“)” “;”
 
 <conditions> ::= <condition> | <condition><logic_operator><conditions>
 
@@ -66,22 +66,22 @@
 <logic_operators> ::= “&&” | “||” 
 
 
-<for_loop> ::= “for” “(“ <for_assignment> “;” <conditions> “;” <increment> “)” “{” <commands> “}”
+<for_loop> ::= “for” “(“ <for_assignment> “;” <conditions> “;” <increment> “)” <c> “{” <commands> “}” <c>
 
 <for_assignment> ::= <identifier> “=” <literal>| <identifier> “=” <identifier>
 
 <increment> ::= <identifier> “=” <identifier><operator_symbol><literal>
 	| <identifier> “=” <identifier><operator_symbol><identifier>
 
-<if_else> ::= “if” “(” <conditions> “)” “{” <commands> “}” <else_if> <else>
+<if_else> ::= <c> “if” “(” <conditions> “)” <c> “{” <commands> “}” <c> <else_if> <c> <else> <c>
 
-<else_if>::=  “else if” “(” <conditions> “)” “{” <commands> “}”
-		| “else if” “(” <conditions> “)” “{” <commands> “}”  <else_if>
+<else_if>::= <c> “else if” “(” <conditions> “)” <c> “{” <commands> “}” <c>
+		| <c> “else if” “(” <conditions> “)” <c> “{” <commands> “}” <c> <else_if> <c>
 		| “”
 
-<else>: “else” “{” <commands> “}” | “”
+<else>: <c> “else” <c> “{” <commands> “}” | “”
 
-<switch_case> ::= “switch” “(” <identifier> ”)” “{” <cases> “default:” <commands> “}”
+<switch_case> ::= “switch” “(” <identifier> ”)” <c> “{” <c> <cases> <c> “default:” <commands> “}” <c>
 |“switch” “(” <identifier> ”)” “{” <cases> “}”
 
 
