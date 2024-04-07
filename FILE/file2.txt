@@ -1,0 +1,100 @@
+/*lkjlkj*/
+//dfsdfsdfsdf
+public class Germanios {
+//lalalal
+
+private char Dean = "dyo metra";
+//afasdfsdfasdfsfasdfsdafasdfsadf
+public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
+
+Kati Antikeimeno = new Allo();
+
+//sd
+boolean theo;
+//asdasdasdasd
+Public void main(int x, boolean Z ) {
+
+
+int x = 6, ntindon = 5, xaxa = true;
+
+boolean lebron = false; //asdasd
+
+ko = '\n';
+
+OLAHTIPOTA = "eimai trelos &^^$";
+//sadfasdfsadf
+meth_call = meth(true, 5, LEMAO);
+
+x = 5;
+/*kljh
+kjh
+asdasd
+*/
+y = 27.23d;
+
+obej = new Obj();
+
+xyz = 5 * 7 / 9 + 72;
+
+ME_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
+/sadfsadf
+
+if (eimai_oraios == true && den_leo_psemata != 7) {
+out.print("Eimai magkas", xasa, Giolo_93);
+}
+//ola ola ola
+else if (o_dean_einai_oraios == true) {
+Ypsos_dean = 2.00d;
+x = x + y + 10;
+x = 32.5d + 12;
+
+}
+
+else { /*hehehe*/
+for (i=0; i<12; i = i+3){
+xyz = 5 * 7 / 9 + 72;
+out.print("O mpampahs einai kouklos");
+
+}
+}//a
+
+x = 5;
+
+y = 27.23d;
+
+//a
+do {
+tranos = '\n';
+den_jero_ti_allh_entolh_na_balo = true;
+}
+while (horizon_mexri_tis_6 == true && 5<7 || 8>x);
+//hehe
+
+switch(o_koutras_einai_alvanos) {
+
+case true: //oxi
+
+out.print("DEN JER TI ALLO NA BALO THEE MOU"); //asd
+
+case false:
+
+default:
+x = 7/9 ;
+break; 
+
+}
+//hello
+
+return x;
+}
+
+Public boolean main2() { return x + y / 2 * 7}
+
+public class Germanios2 {}
+
+}//asas
+
+/*lk
+*/
+public class Germanios3 {}
+//asdasd
