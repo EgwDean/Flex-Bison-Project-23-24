@@ -65,18 +65,13 @@
 "}"   { printf("%s\n", yytext); return RIGHT_BRACE; }
 ";"   { printf("%s\n", yytext); return QMARK; }
 "\/\/".*    { printf("%s\n", yytext); return SINGLE_COMMENT; }
-"\/\*"[^\*]*\*+([^\*\/][^\*]*\*+)*\/"    { printf("%s\n", yytext); return MULTILINE_COMMENT; }
+"\/\*"[^\*]*\*+([^\*\/][^\*]*\*+)*"\/"    { printf("%s\n", yytext); return MULTILINE_COMMENT; }
 .|\n    { printf("%s", yytext); }
 
 
 
-
 "/*"    { BEGIN(COMMENT); }
-
-
 <COMMENT>"*/" { BEGIN(INITIAL); }
-
-
 <COMMENT>.   ;
 
 
