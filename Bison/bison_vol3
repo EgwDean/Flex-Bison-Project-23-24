@@ -39,7 +39,7 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 variable_declaration: c variable_modifier data_type variable QMARK c 
 	| c variable_modifier data_type variable EQUAL normal_type extra_variables QMARK c
-	| c CLASS_NAME variable EQUAL NEW CLASS_NAME LEFT_BRACKET RIGHT_BRACKET QMARK c
+	| c CLASS_NAME variable EQUAL object_instance c
 	;
 
 
