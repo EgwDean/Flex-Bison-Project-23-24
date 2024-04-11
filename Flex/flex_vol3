@@ -7,7 +7,7 @@
 %}
 
 %option noyywrap
-%x COMMENT      // Define start conditions
+%x COMMENT      
 
 %%
 
@@ -71,13 +71,13 @@
 
 
 
-// Rules for entering multi-line comment state
+
 "/*"    { BEGIN(COMMENT); }
 
-// Rules for exiting multi-line comment state
+
 <COMMENT>"*/" { BEGIN(INITIAL); }
 
-// Rule to match any character inside a comment
+
 <COMMENT>.   ;
 
 
