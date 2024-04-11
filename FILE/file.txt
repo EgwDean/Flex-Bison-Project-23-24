@@ -9,7 +9,7 @@ boolean theo;
 
 Public void main(int x, boolean Z ) {
 
-Germanios antikeimeno = new Germanios();
+Germanios antikeimeno = new Germanios();       // ακομα πεταει ERROR
 
 int x = 6, ntindon = 5, xaxa = true;
 
