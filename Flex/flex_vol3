@@ -6,7 +6,7 @@
 %}
 
 %option noyywrap
-%x COMMENT      
+     
 
 %%
 
@@ -68,11 +68,6 @@
 "\/\*"[^\*]*\*+([^\*\/][^\*]*\*+)*"\/"    { printf("%s\n", yytext); return MULTILINE_COMMENT; }
 .|\n    { printf("%s", yytext); }
 
-
-
-"/*"    { BEGIN(COMMENT); }
-<COMMENT>"*/" { BEGIN(INITIAL); }
-<COMMENT>.   ;
 
 
 
