@@ -9,8 +9,6 @@ boolean theo;
 
 Public void main(int x, boolean Z ) {
 
-Germanios antikeimeno = new Germanios();       // ακομα πεταει ERROR
-
 int x = 6, ntindon = 5, xaxa = true;
 
 boolean lebron = false;
@@ -90,4 +88,14 @@ public class Germanios2 {}
 }
 
 
-public class Germanios3 {}
+public class Germanios3 {
+
+Public int main2() { 
+
+ Germanios antikeimeno = new Germanios();
+
+return 0;
+}
+
+
+}
