@@ -7,7 +7,7 @@ private char Dean = "dyo metra";
 //afasdfsdfasdfsfasdfsdafasdfsadf
 public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
 
-Kati Antikeimeno = new Allo();
+// Kati Antikeimeno = new Allo();    ΑΝ ΤΟ ΚΑΝΕΙΣ UNCOMMENT ΤΗ ΓΑΜΗΣΕΣ ΠΕΤΑΕΙ ΕΡΡΟΡ
 
 //sd
 boolean theo;
