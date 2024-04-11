@@ -92,7 +92,7 @@ public class Germanios3 {
 
 Public int main2() { 
 
- Germanios antikeimeno = new Germanios();
+ Germanios antikeimeno = new Germanios();     // ΤΟ ΕΒΑΛΑ ΕΔΩ 
 
 return 0;
 }
