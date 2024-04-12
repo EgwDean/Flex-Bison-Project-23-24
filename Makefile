@@ -1,8 +1,8 @@
 program: lex.yy.c parser.tab.c
 	gcc -o program lex.yy.c parser.tab.c -lfl -ly
 
-lex.yy.c: scanner.l
-	flex scanner.l
+lex.yy.c: lexer.l
+	flex lexer.l
 
 parser.tab.c: parser.y
 	bison -d parser.y
