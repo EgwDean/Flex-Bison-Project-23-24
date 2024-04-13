@@ -50,7 +50,7 @@ extra_variables: COMMA variable
 	         | ;
 
 
-extra_assigned_variables: COMMA variable EQUAL expression extra_variables
+extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variables
 	                  | ;
 
 
