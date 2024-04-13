@@ -1,13 +1,15 @@
 public class Germanios {
 
-private char Dean = "dyo metra";
+private char dean = "dyo metra";
 public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
 
-Kati Antikeimeno = new Allo();  // Kati syntax error  
+Kati antikeimeno = new Allo();    
 
 boolean theo;
 
-Public void main(int x, boolean Z ) {
+Public void main(int x, boolean z){
+
+Obj obj = new Obj();
 
 int x = 6, ntindon = 5, xaxa = true;
 
@@ -15,9 +17,9 @@ boolean lebron = false;
 
 ko = '\n';
 
-OLAHTIPOTA = "eimai trelos &^^$";
+oLAHTIPOTA = "eimai trelos &^^$";
 
-meth_call = meth(true, 5, LEMAO);
+meth_call = meth(true, 5, lEMAO);
 
 x = 5;
 
@@ -25,19 +27,17 @@ y = 27.23d;
 
 
 
-obej = new Obj();
-
 xyz = 5 * 7 / 9 + 72;
 
-ME_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
+mE_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
 
 
 if (eimai_oraios == true && den_leo_psemata != 7) {
-out.print("Eimai magkas", xasa, Giolo_93);
+out.print("Eimai magkas", xasa, giolo_93);
 }
 
 else if (o_dean_einai_oraios == true) {
-Ypsos_dean = 2.00d;
+ypsos_dean = 2.00d;
 x = x + y + 10;
 x = 32.5d + 12;
 
@@ -81,7 +81,7 @@ break;
 return x;
 }
 
-Public boolean main2() { return x + y / 2 * 7}
+Public boolean main2() { return x + y / 2 * 7;}
 
 public class Germanios2 {}
 
@@ -99,3 +99,4 @@ return 0;
 
 
 }
+
