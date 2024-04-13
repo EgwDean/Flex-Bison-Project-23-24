@@ -72,8 +72,7 @@ int line_number = 1;      // Variable to store line number
 ";"   { printf("%s\n", yytext); return QMARK; }
 "\/\/".*    { printf("%s\n", yytext); return SINGLE_COMMENT; }
 "\/\*"[^\*]*\*+([^\*\/][^\*]*\*+)*"\/"    { printf("%s\n", yytext); return MULTILINE_COMMENT; }
-
-.|\n    { printf("%s", yytext); return UNKNOWN; }       // Return unknown token
+.|\n    { printf("%s", yytext); }
 
 
 %%
