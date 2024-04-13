@@ -1,14 +1,14 @@
 public class Germanios {
-
+//vefvervevefv
 private char dean;
 public int mPamphs_31;
 boolean theo; 
 
 Kati antikeimeno = new Allo();    
-
+//vfrwvrwvrv
 
 Public void main(int x, boolean z){
-
+//rververvrv
 Obj obj = new Obj();
 
 int x;
@@ -22,7 +22,7 @@ x = 5;
 y = 27.23d;
 xyz = 5 * 7 / 9 + 72;
 
-
+/*vrvevewvrv*/
 mE_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
 
 
@@ -53,7 +53,7 @@ y = 27.23d;
 do {
 tranos = '\n';
 den_jero_ti_allh_entolh_na_balo = true;
-}
+} /*evwevewvwe*/
 while (horizon_mexri_tis_6 == true && 5<7 || 8>x);
 
 
