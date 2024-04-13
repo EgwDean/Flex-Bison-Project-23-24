@@ -11,7 +11,6 @@ void yyerror(const char *s) {
     fprintf(stderr, "Error at line %d: %s\n", line_number, s);
 }
 
-
 %}
 
 
