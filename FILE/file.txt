@@ -3,7 +3,7 @@ public class Germanios {
 private char Dean = "dyo metra";
 public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
 
-//Kati Antikeimeno = new Allo();  
+Kati Antikeimeno = new Allo();  // Kati syntax error  
 
 boolean theo;
 
@@ -92,7 +92,7 @@ public class Germanios3 {
 
 Public int main2() { 
 
- Germanios antikeimeno = new Germanios();     // ΤΟ ΕΒΑΛΑ ΕΔΩ 
+ Germanios antikeimeno = new Germanios();     // Germanios antikeimeno syntax error
 
 return 0;
 }
