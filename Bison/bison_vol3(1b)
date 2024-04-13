@@ -5,12 +5,12 @@
 
 extern int yylex();
 extern FILE* yyin;
-extern int lines_count; 
+extern int line_number = 1; 
 
 void yyerror(const char *s) {
-    fprintf(stderr, "%s\n", s);
-    printf("\nline %d", lines_count);
+    fprintf(stderr, "Error at line %d: %s\n", line_number, s);
 }
+
 
 %}
 
