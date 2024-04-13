@@ -42,7 +42,7 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 variable_declaration: c variable_modifier data_type variable extra_variables QMARK c 
 	            | c CLASS_NAME variable EQUAL object_instance QMARK c
-	            | c variable_modifier data_type variable EQUAL expression extra_variables QMARK c 
+	            | c variable_modifier data_type variable EQUAL expression extra_assigned_variables QMARK c 
 	            ;
 
 extra_variables: COMMA variable
