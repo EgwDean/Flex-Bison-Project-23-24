@@ -3,7 +3,7 @@ public class Germanios {
 private char Dean = "dyo metra";
 public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
 
-//Kati Antikeimeno = new Allo();  λαθος επειδη τα classnames πρεπει να ειναι ιδια!! επισης το Object instance γινεται εντος μεθοδου!!!
+//Kati Antikeimeno = new Allo();  
 
 boolean theo;
 
