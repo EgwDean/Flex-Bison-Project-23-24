@@ -90,7 +90,7 @@ expression: normal_type | member_access | method_call | operations ;
 operations: num operator_symbol operations | num | variable operator_symbol operations | variable;
 
 
-do_loop: DO LEFT_BRACE commands RIGHT_BRACE  WHILE LEFT_BRACKET conditions RIGHT_BRACKET QMARK ;
+do_loop: DO c LEFT_BRACE commands RIGHT_BRACE c  WHILE LEFT_BRACKET conditions RIGHT_BRACKET QMARK ;
 
 
 conditions: condition | condition logic_operators conditions ;
