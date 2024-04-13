@@ -1,33 +1,27 @@
 public class Germanios {
 
-private char dean = "dyo metra";
-public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
+private char dean;
+public int mPamphs_31;
+boolean theo; 
 
 Kati antikeimeno = new Allo();    
 
-boolean theo;
 
 Public void main(int x, boolean z){
 
 Obj obj = new Obj();
 
-int x = 6, ntindon = 5, xaxa = true;
-
-boolean lebron = false;
+int x;
+boolean lebron;
 
 ko = '\n';
-
 oLAHTIPOTA = "eimai trelos &^^$";
-
 meth_call = meth(true, 5, lEMAO);
 
 x = 5;
-
 y = 27.23d;
-
-
-
 xyz = 5 * 7 / 9 + 72;
+
 
 mE_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
 
