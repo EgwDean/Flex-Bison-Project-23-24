@@ -92,7 +92,7 @@ public class Germanios3 {
 
 Public int main2() { 
 
- Germanios antikeimeno = new Germanios();     // Germanios antikeimeno syntax error
+ Germanios antikeimeno = new Germanios();     
 
 return 0;
 }
