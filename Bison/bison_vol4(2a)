@@ -46,8 +46,8 @@ variable_declaration: c variable_modifier data_type variable QMARK c
 	;
 
 
-extra_variables: COMMA variable EQUAL normal_type 
-	| COMMA variable EQUAL normal_type extra_variables
+extra_variables: COMMA variable EQUAL expression 
+	| COMMA variable EQUAL expression extra_variables
 	| ;
 
 
