@@ -50,9 +50,8 @@ extra_variables: COMMA variable
 	         | ;
 
 
-extra_assigned_variables: COMMA variable EQUAL expression 
-	                 | COMMA variable EQUAL expression extra_variables
-	                 | ;
+extra_assigned_variables: COMMA variable EQUAL expression extra_variables
+	                  | ;
 
 
 method_declarations: c method_declaration c | c method_declaration c method_declarations | ;
