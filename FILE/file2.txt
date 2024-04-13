@@ -94,5 +94,13 @@ public class Germanios2 {}
 
 /*lk
 */
-public class Germanios3 {}
+public class Germanios3 {
+
+Public int main2() { 
+
+ Germanios antikeimeno = new Germanios();     
+
+return 0;
+}
+}
 //asdasd
