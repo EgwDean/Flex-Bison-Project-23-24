@@ -6,10 +6,16 @@
 %}
 
 %option noyywrap
-     
+
+%{
+int line_number = 1;      // Variable to store line number
+%}     
+
+
 
 %%
 
+[\n]    { line_number++; }   // Update line number on newline
 
 "int" { printf("%s", yytext); return INT; }
 "double" { printf("%s", yytext); return DOUBLE; }
@@ -66,10 +72,8 @@
 ";"   { printf("%s\n", yytext); return QMARK; }
 "\/\/".*    { printf("%s\n", yytext); return SINGLE_COMMENT; }
 "\/\*"[^\*]*\*+([^\*\/][^\*]*\*+)*"\/"    { printf("%s\n", yytext); return MULTILINE_COMMENT; }
-.|\n    { printf("%s", yytext); }
 
-
-
+.|\n    { printf("%s", yytext); return UNKNOWN; }       // Return unknown token
 
 
 %%
