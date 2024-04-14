@@ -56,22 +56,26 @@ const char* find_data_type(const char *name) {
 %}
 
 %union {
-   char *str;
+ const char *str;
 }
 
 
-%token PUBLIC_CLASS CLASS_NAME LEFT_BRACE RIGHT_BRACE PUBLIC PRIVATE QMARK VAR
-%token INT DOUBLE CHAR BOOLEAN STRING 
-%token EQUAL NEW LEFT_BRACKET RIGHT_BRACKET VOID PROTECTED M_PUBLIC M_PRIVATE
-%token COMMA RETURN INT_NUM DOUBLE_NUM CHAR_VAR STRING_VAR TRUE FALSE DOT
-%token MUL DIV PLUS MINUS DO WHILE AND OR CHECK_EQUAL LESS GREATER NOT_EQUAL FOR SWITCH CASE 
+%token PUBLIC_CLASS CLASS_NAME LEFT_BRACE RIGHT_BRACE PUBLIC PRIVATE QMARK 
+%token <str> VAR
+%token <str> INT DOUBLE CHAR BOOLEAN STRING 
+%token <str> INT_NUM DOUBLE_NUM CHAR_VAR STRING_VAR TRUE FALSE 
+%token DOT LEFT_BRACKET RIGHT_BRACKET COMMA  MUL DIV PLUS MINUS
+%token EQUAL NEW  VOID PROTECTED M_PUBLIC M_PRIVATE
+%token RETURN
+%token DO WHILE AND OR CHECK_EQUAL LESS GREATER NOT_EQUAL FOR SWITCH CASE 
 %token DOUBLE_DOT DEFAULT BREAK PRINT IF ELSE ELSE_IF
 %token SINGLE_COMMENT MULTILINE_COMMENT
 
+%type <str> variable
+%type <str> data_type
+%type <str> expression
 
-%type <const char*> variable
-%type <const char*> expression
-%type <const char*> data_type
+
 
 %%
 
@@ -102,7 +106,7 @@ variable_declaration: c variable_modifier data_type variable extra_variables QMA
                           // Add the variable to the symbol table
                           add_symbol($4, $3); 
                           // Perform type checking on the assignment expression
-                          char* var_type = find_data_type($4);
+                         const char* var_type = find_data_type($4);
                           if (var_type != "not found") {
                               
                                   if (strcmp($6, "INT_NUM") == 0){
@@ -133,7 +137,7 @@ variable_declaration: c variable_modifier data_type variable extra_variables QMA
                                       }
                                   }
                                   else{
-                                      fprintf(stderr, "Error: Invalid expression type\n");
+                                      fprintf(stderr, "\nError: Invalid expression type\n");
                                       // Handle invalid expression type
                                   }
 
@@ -313,4 +317,3 @@ int main(int argc, char** argv) {
     fclose(file);
     return 0;
 }
-
