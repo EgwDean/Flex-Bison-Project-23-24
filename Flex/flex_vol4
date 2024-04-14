@@ -59,12 +59,12 @@ int line_number = 1;      // Variable to store line number
 "+" { printf("%s", yytext); return PLUS; }
 "-" { printf("%s", yytext); return MINUS; }
 "\." { printf("%s", yytext); return DOT; }
-\'[^\']*\' { printf("%s", yytext); return CHAR_VAR; }
-\"[^\"]*\" { printf("%s", yytext); return STRING_VAR; }
+\'[^\']*\' { printf("%s", yytext); yylval = strdup(yytext); return CHAR_VAR; }
+\"[^\"]*\" { printf("%s", yytext); yylval = strdup(yytext); return STRING_VAR; }
 [A-Z_][a-zA-Z0-9_]*   { printf("%s", yytext); return CLASS_NAME; }
-[a-zA-Z_][a-zA-Z0-9_]*   { printf("%s", yytext); return VAR; }
-[0-9]+             { printf("%s", yytext); return INT_NUM;}
-[0-9]+"."[0-9]+"d" { printf("%s", yytext); return DOUBLE_NUM; }
+[a-zA-Z_][a-zA-Z0-9_]*   { printf("%s", yytext); yylval = strdup(yytext); return VAR; }
+[0-9]+             { printf("%s", yytext); yylval = strdup(yytext); return INT_NUM;}
+[0-9]+"."[0-9]+"d" { printf("%s", yytext); yylval = strdup(yytext); return DOUBLE_NUM; }
 "{"   { printf("%s", yytext); return LEFT_BRACE; }
 ","   { printf("%s", yytext); return COMMA; }
 "}"   { printf("%s\n", yytext); return RIGHT_BRACE; }
