@@ -75,7 +75,7 @@ member_access: variable DOT variable LEFT_BRACKET arguments RIGHT_BRACKET
 method_call: variable LEFT_BRACKET arguments RIGHT_BRACKET ;
 
 
-arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA arguments ; 
+arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA arguments | ; 
 
 
 expression: normal_type | member_access | method_call | operations ;
