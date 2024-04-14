@@ -63,7 +63,7 @@ method_block: variable_declarations commands;
 commands: c command c | c command c commands | ;
 
 
-command: assignment | do_loop | for_loop | switch_case | break | method_call | print | if_else; 
+command: assignment | do_loop | for_loop | switch_case | break | method_call QMARK | print | if_else; 
 
 
 assignment: variable EQUAL expression QMARK ;
