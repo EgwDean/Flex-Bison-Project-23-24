@@ -1,4 +1,3 @@
-
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,11 +17,11 @@ int line_number = 1;      // Variable to store line number
 
 [\n]    { line_number++; }   // Update line number on newline
 
-"int" { printf("%s", yytext); return INT; }
-"double" { printf("%s", yytext); return DOUBLE; }
-"char" { printf("%s", yytext); return CHAR; }
-"boolean" { printf("%s", yytext); return BOOLEAN; }
-"String" { printf("%s", yytext); return STRING; }
+"int" { printf("%s", yytext); yylval = strdup(yytext); return INT; }
+"double" { printf("%s", yytext); yylval = strdup(yytext); return DOUBLE; }
+"char" { printf("%s", yytext); yylval = strdup(yytext); return CHAR; }
+"boolean" { printf("%s", yytext); yylval = strdup(yytext); return BOOLEAN; }
+"String" { printf("%s", yytext); yylval = strdup(yytext); return STRING; }
 "public class"  { printf("%s", yytext); return PUBLIC_CLASS; }
 "private" { printf("%s", yytext); return PRIVATE; }
 "protected" { printf("%s", yytext); return PROTECTED; }
