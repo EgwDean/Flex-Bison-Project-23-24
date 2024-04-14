@@ -5,7 +5,7 @@
 
 extern int yylex();
 extern FILE* yyin;
-extern int line_number = 1; 
+extern int line_number; 
 
 void yyerror(const char *s) {
     fprintf(stderr, "Error at line %d: %s\n", line_number, s);
