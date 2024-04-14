@@ -11,7 +11,7 @@
  |  “”
 
 <variable declaration> ::= <c> <variable_modifier><data_type><identifier> “;” <c>
-			| <c> <capital_identifier><identifier> “=” “new” <capital identifier> “(““)””;” <c>
+			| <c> <capital_identifier><identifier> “=” <object_instance> <c>
 
 		
 
