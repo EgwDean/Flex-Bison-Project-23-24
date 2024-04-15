@@ -7,15 +7,15 @@
 extern int yylex();
 extern FILE* yyin;
 extern int line_number;
-const char* global_type;
+char* global_type;
 
 
 void yyerror(char *s) {
    fprintf(stderr, "Error at line %d: %s\n", line_number, s);
 }
 
-void add_symbol(const char *name, const char *data_type);
-const char* find_data_type(const char *name);
+void add_symbol(char *name, char *data_type);
+char* find_data_type(char *name);
 
 
 // Data structure for a symbol entry
@@ -32,7 +32,7 @@ SymbolEntry symbol_table[MAX_SYMBOLS];
 int symbol_count = 0;
 
 // Function to add a symbol to the symbol table
-void add_symbol(const char *name, const char *data_type) {
+void add_symbol(char *name, char *data_type) {
     if (symbol_count < MAX_SYMBOLS) {
         strcpy(symbol_table[symbol_count].name, name);
         strcpy(symbol_table[symbol_count].data_type, data_type);
@@ -44,7 +44,7 @@ void add_symbol(const char *name, const char *data_type) {
 }
 
 // Function to find the data type of a variable in the symbol table
-const char* find_data_type(const char *name) {
+char* find_data_type(char *name) {
     for (int i = 0; i < symbol_count; i++) {
         if (strcmp(symbol_table[i].name, name) == 0) {
             return symbol_table[i].data_type;
@@ -59,7 +59,7 @@ const char* find_data_type(const char *name) {
 %}
 
 %union {
- const char *str;
+ char *str;
 }
 
 
@@ -110,9 +110,9 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 			  add_symbol($4, $3); 
 
                           // Perform type checking on the assignment expression
-                         const char* var_type = find_data_type($4);
+                          char* var_type = find_data_type($4);
 			
-			  if($7 != NULL){ global_type = var_type; }
+			  if($7 != NULL){ strcpy(var_type, global_type); }
 		
                           if (var_type != "not found") {
                                   
@@ -178,7 +178,7 @@ extra_assigned_variables: | COMMA variable EQUAL expression extra_assigned_varia
                               // Perform type checking on the assignment expression
                                
 				add_symbol($2, global_type);
-			      const char* var_type = find_data_type($2);
+			        char* var_type = find_data_type($2);
 
                           if (var_type != "not found") {    
 				if (strcmp($4, "INT_NUM") == 0){
