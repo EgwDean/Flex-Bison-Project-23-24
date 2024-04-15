@@ -139,6 +139,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							// Perform type checking on the assignments
 							if (!compareAll(symbol_table)) {
 							printf("Error: Expressions are not all of same type.\n");
+							exit(EXIT_FAILURE);
 							} 
 						}						
                                                 ;
