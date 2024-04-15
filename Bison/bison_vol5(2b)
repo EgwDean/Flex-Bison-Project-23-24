@@ -77,7 +77,7 @@ const char* find_data_type(const char *name) {
 %type <str> variable
 %type <str> data_type
 %type <str> expression
-
+%type <str> extra_assigned_variables
 
 
 %%
@@ -111,7 +111,8 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
                           // Perform type checking on the assignment expression
                          const char* var_type = find_data_type($4);
-			 global_type = var_type;
+			
+			  if($7 != NULL){ global_type = var_type; }
 		
                           if (var_type != "not found") {
                                   
@@ -380,4 +381,3 @@ int main(int argc, char** argv) {
     fclose(file);
     return 0;
 }
-
