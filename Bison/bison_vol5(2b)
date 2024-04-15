@@ -1,4 +1,3 @@
-
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -113,8 +112,10 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
                      // Perform type checking on the assignment expression
                      char* var_type = find_data_type($4);
-		
-		     if(strcmp($7, "") != 0){ 
+
+		//Checking if rule <extra_assigned_variables> is empty
+		//If not -->  store the var_type in global_type to be used in the next extra assignments
+		    if(strcmp($7, "") != 0){ 
 			strcpy(global_type, var_type);  
 		     }
 		   
