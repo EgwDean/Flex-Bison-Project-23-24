@@ -23,6 +23,7 @@ typedef struct {
     char data_type[10];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
 } SymbolEntry;
 
+
 // Maximum number of symbols (adjust as needed)
 #define MAX_SYMBOLS 100
 
