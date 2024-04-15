@@ -3,10 +3,10 @@
 public class Germanios {
 
 //lalalal
-private char dean = "dyo metra";
+private String dean = "dyo metra";
 
 //afasdfsdfasdfsfasdfsdafasdfsadf
-public int mPamphs_31 = 32.5d, ntindon = 5, xaxa = true;
+public int mPamphs_31 = 3, ntindon = 4, xaxa = 5;
 Kati antikeimeno = new Allo();    
 
 //sd
