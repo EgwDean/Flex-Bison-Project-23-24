@@ -112,7 +112,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
                           // Perform type checking on the assignment expression
                           char* var_type = find_data_type($4);
 			
-			  if($7 != NULL){ strcpy(var_type, global_type); }
+			  if($7 != NULL){ strcpy(global_type, var_type); }
 		
                           if (var_type != "not found") {
                                   
