@@ -141,7 +141,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 					
 				   if (strcmp($6, "TRUE") == 0 || strcmp($6, "FALSE") == 0){
                                        if (strcmp(var_type, "boolean") != 0 ) {
-                                          fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n", $4);
+                                          fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n");
                                            exit(EXIT_FAILURE);
                                       }
 				  }
