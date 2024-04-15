@@ -1,7 +1,7 @@
 public class Germanios {
 
 
-public int x = 6, ntindon = 5, xaxa = 5;
+public int x = 6, ntindon = 5, xaxa = 5;    // Error: Variable assigned to int is not of type INT
 
 
 Public void main(int x, boolean z ) {
