@@ -7,6 +7,8 @@
 extern int yylex();
 extern FILE* yyin;
 extern int line_number;
+const char* global_type;
+
 
 void yyerror(char *s) {
    fprintf(stderr, "Error at line %d: %s\n", line_number, s);
@@ -109,7 +111,8 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
                           // Perform type checking on the assignment expression
                          const char* var_type = find_data_type($4);
-
+			 global_type = var_type;
+		
                           if (var_type != "not found") {
                                   
                                   if (strcmp($6, "INT_NUM") == 0){
@@ -169,21 +172,57 @@ extra_variables: COMMA variable extra_variables
 
 
 
-extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variables
+extra_assigned_variables: | COMMA variable EQUAL expression extra_assigned_variables 
                           {
                               // Perform type checking on the assignment expression
-                              const char* var_type = find_data_type($2);
+                               
+				add_symbol($2, global_type);
+			      const char* var_type = find_data_type($2);
 
-                              if (var_type != "not found") {
-                                  if (strcmp(var_type, find_data_type($4)) != 0) {
-                                      fprintf(stderr, "Error: Variable '%s' assigned with different type than initial assignment\n", $2);
+                          if (var_type != "not found") {    
+				if (strcmp($4, "INT_NUM") == 0){
+                                      if (strcmp(var_type, "int") != 0 ) {
+                                         fprintf(stderr, "Error: Variable assigned to int is not of type INT\n", $4);
+                                           exit(EXIT_FAILURE);
+                                      }
+				  }
+                                     
+                                  if (strcmp($4, "DOUBLE_NUM") == 0){
+                                       if (strcmp(var_type, "double") != 0 )  {
+                                          fprintf(stderr, "Error: Variable assigned to double is not of type DOUBLE\n");
+                                           exit(EXIT_FAILURE);
+                                      }
                                   }
+                                   
+				  if (strcmp($4, "CHAR_VAR") == 0){
+                                       if (strcmp(var_type, "char") != 0 )  {
+                                          fprintf(stderr, "Error: Variable assigned to char is not of type CHAR\n");
+                                           exit(EXIT_FAILURE);
+                                      }
+                                  }
+					
+				  if (strcmp($4, "STRING_VAR") == 0){
+                                       if (strcmp(var_type, "String") != 0 )  {
+                                          fprintf(stderr, "Error: Variable assigned to string is not of type STRING\n");
+                                           exit(EXIT_FAILURE);
+                                      }
+                                  }
+					
+				   if (strcmp($4, "TRUE") == 0 || strcmp($4, "FALSE") == 0){
+                                       if (strcmp(var_type, "boolean") != 0 ) {
+                                          fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n");
+                                           exit(EXIT_FAILURE);
+                                      }
+				  }
+
+
+
                               } else {
                                   fprintf(stderr, "Error: Variable '%s' not found\n", $2);
                                   // Handle variable not found
                               }
                           }
-                        | ;
+                          ;
 
 
 
@@ -292,4 +331,53 @@ return: RETURN num QMARK ;
 break: BREAK QMARK ;
 
 
-print: PRINT 
+print: PRINT LEFT_BRACKET STRING_VAR print_vars RIGHT_BRACKET QMARK ;
+
+
+print_vars: COMMA variable | COMMA variable print_vars | ;
+
+
+variable_modifier: PUBLIC | PRIVATE | ;
+
+
+return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ; 
+
+
+data_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
+
+
+method_modifier: M_PUBLIC | M_PRIVATE | PROTECTED ;
+
+
+variable: VAR ;
+
+
+num: INT_NUM | DOUBLE_NUM ;
+
+c: comment | c comment | ;
+
+comment: SINGLE_COMMENT | MULTILINE_COMMENT ;
+
+
+
+
+%%
+
+
+int main(int argc, char** argv) { 
+    char filename[] = "file.txt";
+    if(argc == 2)
+    {
+	strcpy(filename, argv[1]);
+    }
+    FILE *file = fopen(filename, "r");
+    if (!file) {
+        perror(filename);
+        return 1;
+    }
+    yyin = file;
+    yyparse();
+    fclose(file);
+    return 0;
+}
+
