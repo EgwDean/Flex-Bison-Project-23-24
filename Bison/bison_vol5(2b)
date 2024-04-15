@@ -1,4 +1,5 @@
 %{
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +7,7 @@
 extern int yylex();
 extern FILE* yyin;
 extern int line_number;
-char global_type[100] = "paranoia";
+
 
 
 void yyerror(char *s) {
@@ -55,8 +56,36 @@ char* find_data_type(char *name) {
 }
 
 
+int compareAll(SymbolEntry *symbol_table) {
+							
+									
+	// Get the value of the first entry
+	char *firstValue = symbol_table[0].data_type;
+
+	// Iterate over the remaining entries and compare their values
+	for (int i = 1; i < MAX_SYMBOLS; i++) {
+		
+		if (strcmp(symbol_table[i].data_type, "") != 0){
+			
+			// If any value is different from the first one, return 0
+			if (strcmp(firstValue, symbol_table[i].data_type) != 0) {
+								
+			return 0;
+			}
+		}
+		else{continue;}
+	}
+
+	// If all values are equal, return 1
+	return 1;
+}
+
+
+
+
 
 %}
+
 
 %union {
  char *str;
@@ -103,137 +132,37 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 
 variable_declaration:   c variable_modifier data_type variable extra_variables QMARK c
-          	      | c CLASS_NAME variable EQUAL object_instance QMARK c
-		      | c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
-            {		
+						| c CLASS_NAME variable EQUAL object_instance QMARK c
+						| c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
+						{		
  
-                      // Add the variable to the symbol table
-		      add_symbol($4, $3); 
-
-                     // Perform type checking on the assignment expression
-                     char* var_type = find_data_type($4);
-
-		//Checking if rule <extra_assigned_variables> is empty
-		//If not -->  store the var_type in global_type to be used in the next extra assignments
-		    if(strcmp($7, "") != 0){ 
-			strcpy(global_type, var_type);  
-		     }
-		   
-
-                     if (var_type != "not found") {
-                                  
-                                  if (strcmp($6, "INT_NUM") == 0){
-                                      if (strcmp(var_type, "int") != 0 ) {
-                                         fprintf(stderr, "Error: Variable assigned to int is not of type INT\n", $4);
-                                           exit(EXIT_FAILURE);
-                                      }
-				  }
-                                     
-                                  if (strcmp($6, "DOUBLE_NUM") == 0){
-                                       if (strcmp(var_type, "double") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to double is not of type DOUBLE\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-                                   
-				  if (strcmp($6, "CHAR_VAR") == 0){
-                                       if (strcmp(var_type, "char") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to char is not of type CHAR\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-					
-				  if (strcmp($6, "STRING_VAR") == 0){
-                                       if (strcmp(var_type, "String") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to string is not of type STRING\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-					
-				   if (strcmp($6, "TRUE") == 0 || strcmp($6, "FALSE") == 0){
-                                       if (strcmp(var_type, "boolean") != 0 ) {
-                                          fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-				  }
-                          } 
-			  else {
-                              fprintf(stderr, "Error: Variable '%s' not found\n", $4);
-                              // Handle variable not found
-                          }
-	       	   
-             }
-            ;
-
-
-
-
+							// Add the first variable and its expression to the symbol table
+							add_symbol($4, $6); 
+							
+						
+							// Perform type checking on the assignments
+							
+							// Compare all fields' values
+							if (!compareAll(symbol_table)) {
+							printf("Error: Expressions are not all of same type.\n");
+							} 
+						}						
+                        ;
 
 
 
 
 extra_variables: COMMA variable extra_variables
-	         | ;
+	             | ;
 
 
 
-
-
-
-extra_assigned_variables: COMMA variable EQUAL normal_type extra_assigned_variables 
+extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_variables 
                           {
-                              // Perform type checking on the assignment expression
-                               
-				add_symbol($2, global_type);
-			        char* var_type = find_data_type($2);
-
-                          if (var_type != "not found") {    
-				if (strcmp($4, "INT_NUM") == 0){
-                                      if (strcmp(var_type, "int") != 0 ) {
-                                         fprintf(stderr, "Error: Variable assigned to int is not of type INT\n", $4);
-                                           exit(EXIT_FAILURE);
-                                      }
-				  }
-                                     
-                                  if (strcmp($4, "DOUBLE_NUM") == 0){
-                                       if (strcmp(var_type, "double") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to double is not of type DOUBLE\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-                                   
-				  if (strcmp($4, "CHAR_VAR") == 0){
-                                       if (strcmp(var_type, "char") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to char is not of type CHAR\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-					
-				  if (strcmp($4, "STRING_VAR") == 0){
-                                       if (strcmp(var_type, "String") != 0 )  {
-                                          fprintf(stderr, "Error: Variable assigned to string is not of type STRING\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-                                  }
-					
-				   if (strcmp($4, "TRUE") == 0 || strcmp($4, "FALSE") == 0){
-                                       if (strcmp(var_type, "boolean") != 0 ) {
-                                          fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n");
-                                           exit(EXIT_FAILURE);
-                                      }
-				  }
-
-
-
-                              } else {
-                                  fprintf(stderr, "Error: Variable '%s' not found\n", $2);
-                                  // Handle variable not found
-                              }
-                          }
-                         |  
-			 ;
-
-
+								// Add extra variables and their assigned expressions to symbol_table 
+								add_symbol($2, $4);
+                          }  
+						  ;
 
 
 
