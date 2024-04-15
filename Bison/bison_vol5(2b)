@@ -75,7 +75,7 @@ char* find_data_type(char *name) {
 
 %type <str> variable
 %type <str> data_type
-%type <str> normal_type
+%type <str> normal_type                  //only normal_type assignments with same line variable declarations
 %type <str> extra_assigned_variables
 
 
