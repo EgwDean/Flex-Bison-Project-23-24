@@ -30,8 +30,8 @@ int line_number = 1;      // Variable to store line number
 "Public" { printf("%s", yytext); return M_PUBLIC; }
 "void" { printf("%s", yytext); return VOID; }
 "return" { printf("%s", yytext); return RETURN; }
-"true" { printf("%s", yytext); return TRUE; }
-"false" { printf("%s", yytext); return FALSE; }
+"true" { printf("%s", yytext); yylval.str = strdup("TRUE"); return TRUE; }
+"false" { printf("%s", yytext); yylval.str = strdup("FALSE"); return FALSE; }
 "do" { printf("%s", yytext); return DO; }
 "while" { printf("%s", yytext); return WHILE; }
 "for" { printf("%s", yytext); return FOR; }
