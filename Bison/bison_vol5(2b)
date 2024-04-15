@@ -114,35 +114,35 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
                                   if (strcmp($6, "INT_NUM") == 0){
                                       if (strcmp(var_type, "int") != 0 ) {
                                          fprintf(stderr, "Error: Variable assigned to int is not of type INT\n", $4);
-                                          // Handle type mismatch
+                                          
                                       }
 				  }
                                      
                                   if (strcmp($6, "DOUBLE_NUM") == 0){
                                        if (strcmp(var_type, "double") != 0 )  {
                                           fprintf(stderr, "Error: Variable assigned to double is not of type DOUBLE\n");
-                                          // Handle type mismatch
+                                          
                                       }
                                   }
                                    
 				  if (strcmp($6, "CHAR_VAR") == 0){
                                        if (strcmp(var_type, "char") != 0 )  {
                                           fprintf(stderr, "Error: Variable assigned to char is not of type CHAR\n");
-                                          // Handle type mismatch
+                                        
                                       }
                                   }
 					
 				  if (strcmp($6, "STRING_VAR") == 0){
                                        if (strcmp(var_type, "String") != 0 )  {
                                           fprintf(stderr, "Error: Variable assigned to string is not of type STRING\n");
-                                          // Handle type mismatch
+                                          
                                       }
                                   }
 					
-				   if (strcmp($6, "BOOLEAN") == 0){
+				   if (strcmp($6, "TRUE") == 0) | strcmp($6, "FALSE") == 0){
                                        if (strcmp(var_type, "boolean") != 0 ) {
                                           fprintf(stderr, "Error: Variable assigned to boolean is not of type BOOLEAN\n", $4);
-                                          // Handle type mismatch
+                                          
                                       }
 				  }
                           } 
