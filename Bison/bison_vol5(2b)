@@ -7,7 +7,7 @@
 extern int yylex();
 extern FILE* yyin;
 extern int line_number;
-char* global_type;
+char global_type[100] = "paranoia";
 
 
 void yyerror(char *s) {
@@ -76,7 +76,7 @@ char* find_data_type(char *name) {
 
 %type <str> variable
 %type <str> data_type
-%type <str> expression
+%type <str> normal_type
 %type <str> extra_assigned_variables
 
 
@@ -104,20 +104,22 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 variable_declaration:   c variable_modifier data_type variable extra_variables QMARK c
           	      | c CLASS_NAME variable EQUAL object_instance QMARK c
-		      | c variable_modifier data_type variable EQUAL expression extra_assigned_variables QMARK c
-            {		   
+		      | sub_rule ;
+
+sub_rule:c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
+            {		   printf("%s", global_type); 
                       // Add the variable to the symbol table
 		      add_symbol($4, $3); 
 
                      // Perform type checking on the assignment expression
                      char* var_type = find_data_type($4);
-			
-		     if($7 != NULL){ 
-			strcpy(global_type, var_type); 
+		
+		     if(strcmp($7, NULL) != 0){ 
+			strcpy(global_type, var_type);  
 		     }
-		     else{
+		   
 
-                          if (var_type != "not found") {
+                     if (var_type != "not found") {
                                   
                                   if (strcmp($6, "INT_NUM") == 0){
                                       if (strcmp(var_type, "int") != 0 ) {
@@ -158,7 +160,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
                               fprintf(stderr, "Error: Variable '%s' not found\n", $4);
                               // Handle variable not found
                           }
-	       	   }
+	       	   
              }
             ;
 
@@ -177,7 +179,7 @@ extra_variables: COMMA variable extra_variables
 
 
 
-extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variables 
+extra_assigned_variables: COMMA variable EQUAL normal_type extra_assigned_variables 
                           {
                               // Perform type checking on the assignment expression
                                
@@ -227,7 +229,8 @@ extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variabl
                                   // Handle variable not found
                               }
                           }
-                         |  ;
+                         |  
+			 ;
 
 
 
