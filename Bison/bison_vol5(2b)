@@ -1,3 +1,4 @@
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -164,8 +165,28 @@ extra_variables: COMMA variable extra_variables
 	         | ;
 
 
+
+
+
+
 extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variables
-			  | ;
+                          {
+                              // Perform type checking on the assignment expression
+                              const char* var_type = find_data_type($2);
+
+                              if (var_type != "not found") {
+                                  if (strcmp(var_type, find_data_type($4)) != 0) {
+                                      fprintf(stderr, "Error: Variable '%s' assigned with different type than initial assignment\n", $2);
+                                  }
+                              } else {
+                                  fprintf(stderr, "Error: Variable '%s' not found\n", $2);
+                                  // Handle variable not found
+                              }
+                          }
+                        | ;
+
+
+
 
 
 method_declarations: c method_declaration c | c method_declaration c method_declarations | ;
@@ -271,52 +292,4 @@ return: RETURN num QMARK ;
 break: BREAK QMARK ;
 
 
-print: PRINT LEFT_BRACKET STRING_VAR print_vars RIGHT_BRACKET QMARK ;
-
-
-print_vars: COMMA variable | COMMA variable print_vars | ;
-
-
-variable_modifier: PUBLIC | PRIVATE | ;
-
-
-return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ; 
-
-
-data_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
-
-
-method_modifier: M_PUBLIC | M_PRIVATE | PROTECTED ;
-
-
-variable: VAR ;
-
-
-num: INT_NUM | DOUBLE_NUM ;
-
-c: comment | c comment | ;
-
-comment: SINGLE_COMMENT | MULTILINE_COMMENT ;
-
-
-
-
-%%
-
-
-int main(int argc, char** argv) { 
-    char filename[] = "file.txt";
-    if(argc == 2)
-    {
-	strcpy(filename, argv[1]);
-    }
-    FILE *file = fopen(filename, "r");
-    if (!file) {
-        perror(filename);
-        return 1;
-    }
-    yyin = file;
-    yyparse();
-    fclose(file);
-    return 0;
-}
+print: PRINT 
