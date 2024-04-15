@@ -8,4 +8,4 @@ parser.tab.c: parser.y
 	bison -d parser.y
 
 clean:
-	rm -f program lex.yy.c parser.tab.c parser.tab.h
+	rm -f program lex.yy.c parser.tab.c parser.tab.h parser.y lexer.l
