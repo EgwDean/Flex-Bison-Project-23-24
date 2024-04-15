@@ -160,8 +160,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
 
 
-extra_variables: COMMA variable
-	         | COMMA variable extra_variables
+extra_variables: COMMA variable extra_variables
 	         | ;
 
 
