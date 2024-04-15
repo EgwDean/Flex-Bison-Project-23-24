@@ -40,18 +40,10 @@ nested_class: c public_class c | ;
 variable_declarations: variable_declaration | variable_declaration variable_declarations | ;
 
 
-variable_declaration: c variable_modifier data_type variable extra_variables QMARK c 
+variable_declaration: c variable_modifier data_type variable QMARK c 
 	            | c CLASS_NAME variable EQUAL object_instance QMARK c
-	            | c variable_modifier data_type variable EQUAL expression extra_assigned_variables QMARK c 
+	            | c variable_modifier data_type variable EQUAL expression QMARK c 
 	            ;
-
-extra_variables: COMMA variable
-	         | COMMA variable extra_variables
-	         | ;
-
-
-extra_assigned_variables: COMMA variable EQUAL expression extra_assigned_variables
-	                  | ;
 
 
 method_declarations: c method_declaration c | c method_declaration c method_declarations | ;
