@@ -5,4 +5,4 @@
 
 <p><strong>&#x2022;&nbsp; Τα ονόματα των δύο αρχείων είναι lexer.l και parser.y και τα φτιαχνουμε με "make" αφου κατεβάσουμε το Makefile.</strong></p>
 
-<p><strong>&#x2022;&nbsp; Με "make clean" σβήνουμε τα αρχεία που προέλυψαν από το "make".</strong></p>
+<p><strong>&#x2022;&nbsp; Με "make clean" σβήνουμε τα αρχεία που προέκυψαν από το "make".</strong></p>
