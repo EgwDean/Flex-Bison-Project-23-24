@@ -1,3 +1,4 @@
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,3 +76,4 @@ int line_number = 1;      // Variable to store line number
 
 
 %%
+
