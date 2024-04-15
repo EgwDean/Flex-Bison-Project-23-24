@@ -104,10 +104,10 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 variable_declaration:   c variable_modifier data_type variable extra_variables QMARK c
           	      | c CLASS_NAME variable EQUAL object_instance QMARK c
-		      | sub_rule ;
+		      | c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
+            {		
 
-sub_rule:c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
-            {		   printf("%s", global_type); 
+			   printf("%s", global_type); 
                       // Add the variable to the symbol table
 		      add_symbol($4, $3); 
 
