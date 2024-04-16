@@ -15,6 +15,8 @@ void yyerror(char *s) {
 }
 
 void add_symbol(char *name, char *data_type);
+void clearTable(SymbolEntry *symbol_table);
+int compareAll(SymbolEntry *symbol_table);
 
 
 // Data structure for a symbol entry
