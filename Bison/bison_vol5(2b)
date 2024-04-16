@@ -1,3 +1,4 @@
+
 %{
 
 #include <stdio.h>
@@ -55,6 +56,14 @@ char* find_data_type(char *name) {
 }
 
 
+void clearTable(SymbolEntry *symbol_table){
+	 for (int i = 1; i < MAX_EXPR; i++) {  
+		if (strcmp(symbol_table[i].data_type, "") != 0){ 
+			 strcpy(symbol_table[i].data_type, "");
+		}
+	}
+}
+
 int compareAll(SymbolEntry *symbol_table) {
 							
 									
@@ -77,7 +86,11 @@ int compareAll(SymbolEntry *symbol_table) {
 
 	// If all values are equal, return 1
 	return 1;
+
 }
+
+
+
 
 %}
 
@@ -131,7 +144,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 						| c CLASS_NAME variable EQUAL object_instance QMARK c
 						| c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
 						{		
- 
+ 							
 							// Add the first variable and its expression to the symbol table
 							add_symbol($4, $6); 
 							
@@ -141,6 +154,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							printf("Error: Expressions are not all of same type.\n");
 							exit(EXIT_FAILURE);
 							} 
+							else{  expr_count=0; clearTable(symbol_table);   printf("%s", symbol_table[0].data_type); }
 						}						
                                                 ;
 
@@ -151,6 +165,7 @@ extra_variables: COMMA variable extra_variables
 
 extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_variables 
                           {
+					
 					// Add extra variables and their assigned expressions to symbol_table 
 					add_symbol($2, $4);
                           }  
