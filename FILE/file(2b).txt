@@ -45,7 +45,7 @@ String x = "Yesir", y = "lesgo";
 private boolean x = true, y = false;
 
 
-int x = 12 + 5.4d / y * 3; 
+//int x = 12 + 5.4d / y * 3; 
 
 
 Public void main(int x, boolean z ) {
@@ -93,7 +93,7 @@ String x = "Yesir", y = "lesgo";
 boolean x = true, y = false;
 
 
-int x = 12 + 5.4d / y * 3; 
+//int x = 12 + 5.4d / y * 3; 
 
 
 x = 5;
