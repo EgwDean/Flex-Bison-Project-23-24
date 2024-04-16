@@ -48,7 +48,7 @@ void add_symbol(char *name, char *data_type) {
 }
 
 
-// Function to clear the normal_types table
+// Function to clear the normal_type entries
 void clearTable(SymbolEntry *symbol_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
 		if (strcmp(symbol_table[i].data_type, "") != 0){ 
