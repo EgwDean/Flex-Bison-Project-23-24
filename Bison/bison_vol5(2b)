@@ -15,7 +15,6 @@ void yyerror(char *s) {
 }
 
 void add_symbol(char *name, char *data_type);
-char* find_data_type(char *name);
 
 
 // Data structure for a symbol entry
@@ -44,16 +43,6 @@ void add_symbol(char *name, char *data_type) {
     }
 }
 
-// Function to find the data type of a variable in the symbol table
-char* find_data_type(char *name) {
-    for (int i = 0; i < expr_count; i++) {
-        if (strcmp(symbol_table[i].name, name) == 0) {
-            return symbol_table[i].data_type;
-        }
-    }
-    return "not found";
-
-}
 
 
 void clearTable(SymbolEntry *symbol_table){
@@ -63,6 +52,7 @@ void clearTable(SymbolEntry *symbol_table){
 		}
 	}
 }
+
 
 int compareAll(SymbolEntry *symbol_table) {
 							
@@ -90,8 +80,6 @@ int compareAll(SymbolEntry *symbol_table) {
 }
 
 
-
-
 %}
 
 
@@ -104,7 +92,7 @@ int compareAll(SymbolEntry *symbol_table) {
 %token PUBLIC_CLASS CLASS_NAME LEFT_BRACE RIGHT_BRACE PUBLIC PRIVATE QMARK 
 %token <str> VAR
 %token <str> INT DOUBLE CHAR BOOLEAN STRING 
-%token <str> INT_NUM DOUBLE_NUM CHAR_VAR STRING_VAR TRUE FALSE 
+%token <str>  DOUBLE_NUM INT_NUM CHAR_VAR STRING_VAR TRUE FALSE 
 %token DOT LEFT_BRACKET RIGHT_BRACKET COMMA  MUL DIV PLUS MINUS
 %token EQUAL NEW  VOID PROTECTED M_PUBLIC M_PRIVATE
 %token RETURN
@@ -264,7 +252,7 @@ else: c ELSE c LEFT_BRACE commands RIGHT_BRACE | ;
 
 
 
-normal_type: INT_NUM | DOUBLE_NUM | TRUE | FALSE | CHAR_VAR | STRING_VAR ; 
+normal_type: DOUBLE_NUM | INT_NUM | TRUE | FALSE | CHAR_VAR | STRING_VAR ; 
 
 
 object_instance: NEW CLASS_NAME LEFT_BRACKET RIGHT_BRACKET ; 
