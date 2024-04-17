@@ -140,9 +140,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							// Add the first variable and its expression to the symbol table
 							add_symbol($4, $6);
 							 
-						}
-						c
-						{	
+													
 							
 							if (!compareAll(symbol_table)) {
 								printf("Error: Expressions are not all of the same type.\n");
