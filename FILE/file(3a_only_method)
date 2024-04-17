@@ -3,7 +3,7 @@ public class Germanios {
 
 
 
-Public void main(int x, boolean z ) {
+Private void main(int x, boolean z ) {
 
 return 0;
 }
@@ -12,9 +12,6 @@ return 0;
 protected int mperdougos (int z) {
 
 main();
-
-
-x = main();
 
 //mperdougos();
 
@@ -28,12 +25,36 @@ mperdougos(x,z,y);
 
 boom_boom = main();
 
-bomba(bomba);
-
+//bomba(bomba);
 
 return z + 2 * 7;
 }
 
+
+	public class C {
+
+		Public int main3() { 
+		main();  
+		return 0;
+		}
+
+	}
+
+}
+
+
+public class B {
+
+Public void main2() { 
+
+mperdougos();
+
+main3();
+
+main(); 
+return 0;
+
+}
 
 }
 
