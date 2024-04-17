@@ -132,7 +132,7 @@ method_call: variable LEFT_BRACKET arguments RIGHT_BRACKET ;
 arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA arguments | ; 
 
 
-expression: normal_type | member_access | method_call | operations ;
+expression: normal_type | member_access | method_call | operations_ending_with_INT_NUM | operations_ending_with_DOUBLE_NUM ;
 
 
 operations_ending_with_INT_NUM: num operator_symbol operations_ending_with_INT_NUM | variable operator_symbol operations_ending_with_INT_NUM | variable | INT_NUM;
