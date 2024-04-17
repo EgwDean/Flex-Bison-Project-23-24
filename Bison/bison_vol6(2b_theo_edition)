@@ -50,7 +50,7 @@ variable_declaration:  c int_decl c
 
 int_decl : variable_modifier INT variable more_variables QMARK 
 	| variable_modifier INT variable EQUAL INT_NUM extra_int_variables QMARK
-	| variable_modifier INT variable EQUAL operations QMARK 
+	| variable_modifier INT variable EQUAL operations 
 	;
 
 extra_int_variables: COMMA variable EQUAL INT_NUM 
@@ -59,7 +59,7 @@ extra_int_variables: COMMA variable EQUAL INT_NUM
 
 double_decl : variable_modifier DOUBLE variable more_variables QMARK 
 	| variable_modifier DOUBLE variable EQUAL DOUBLE_NUM extra_double_variables QMARK
-	| variable_modifier DOUBLE variable EQUAL operations QMARK 
+	| variable_modifier DOUBLE variable EQUAL operations
 	;
 
 
@@ -135,7 +135,7 @@ arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA
 expression: normal_type | member_access | method_call | operations ;
 
 
-operations: num operator_symbol operations | variable operator_symbol operations | variable;
+operations: num operator_symbol operations | variable operator_symbol operations | variable QMARK | num QMARK;
 
 
 do_loop: DO c LEFT_BRACE commands RIGHT_BRACE c  WHILE LEFT_BRACKET conditions RIGHT_BRACKET QMARK ;
