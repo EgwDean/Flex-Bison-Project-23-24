@@ -135,9 +135,9 @@ arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA
 expression: normal_type | member_access | method_call | operations ;
 
 
-operations_ending_with_INT_NUM: num operator_symbol operations | variable operator_symbol operations | variable | INT_NUM;
+operations_ending_with_INT_NUM: num operator_symbol operations_ending_with_INT_NUM | variable operator_symbol operations_ending_with_INT_NUM | variable | INT_NUM;
 
-operations_ending_with_DOUBLE_NUM:   num operator_symbol operations | variable operator_symbol operations | variable | DOUBLE_NUM;
+operations_ending_with_DOUBLE_NUM:   num operator_symbol operations_ending_with_DOUBLE_NUM | variable operator_symbol operations_ending_with_DOUBLE_NUM | variable | DOUBLE_NUM;
 
 
 do_loop: DO c LEFT_BRACE commands RIGHT_BRACE c  WHILE LEFT_BRACKET conditions RIGHT_BRACKET QMARK ;
