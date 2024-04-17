@@ -53,7 +53,6 @@ int_decl : variable_modifier INT variable more_variables QMARK
 	| variable_modifier INT variable EQUAL operations QMARK 
 	;
 
-
 extra_int_variables: COMMA variable EQUAL INT_NUM 
 	| COMMA variable EQUAL INT_NUM extra_int_variables
 	| ;
