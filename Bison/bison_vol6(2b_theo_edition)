@@ -146,7 +146,7 @@ conditions: condition | condition logic_operators conditions ;
 
 condition: variable compare_symbol normal_type 
 		| normal_type compare_symbol variable
-		| variable compare_symbol VAR
+		| variable compare_symbol variable
 		| normal_type compare_symbol normal_type ;
 
 
