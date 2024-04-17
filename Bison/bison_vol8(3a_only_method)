@@ -77,9 +77,24 @@ void print_methods() {
 void clear_methods() {
     for (int i = 0; i < 100; ++i) {
         strcpy(m_table[i].method_name, "");
+	strcpy(m_table[i].method_type, "");
+	strcpy(m_table[i].method_identifier, "");
     }
     m_count = 0;
-    printf("Methods Table cleared.\n");
+    //printf("Methods Table cleared.\n");
+}
+
+void clear_private_methods() {
+    for (int i = 0; i < 100; ++i) {
+	if (strcmp(m_table[i].method_identifier, "Private") == 0)
+	{
+        strcpy(m_table[i].method_name, "");
+	strcpy(m_table[i].method_type, "");
+	strcpy(m_table[i].method_identifier, "");
+	}
+    }
+    //m_count = 0;
+    //printf("Methods Table for private cleared.\n");
 }
 
 
@@ -186,9 +201,19 @@ int compareAll(SymbolEntry *symbol_table) {
 
 program: c public_class c
         | program c public_class c
-        ;
+	
+	{
+	clear_methods();
+	}
+	
+	;
 
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
+
+		{
+		clear_private_methods();
+		}
+
                 ;
 
 class_block: variable_declarations method_declarations nested_class
