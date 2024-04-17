@@ -50,7 +50,7 @@ variable_declaration:  c int_decl c
 
 int_decl : variable_modifier INT variable more_variables QMARK 
 	| variable_modifier INT variable EQUAL INT_NUM extra_int_variables QMARK
-	| variable_modifier INT variable EQUAL operations_ending_with_INT_NUM
+	| variable_modifier INT variable EQUAL operations_ending_with_INT_NUM QMARK
 	;
 
 extra_int_variables: COMMA variable EQUAL INT_NUM 
