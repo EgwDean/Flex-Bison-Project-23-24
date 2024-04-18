@@ -29,10 +29,10 @@ boolean valid = true, humidity = false, temperature = true;
 
 
 // Uncomment to raise errors
-int x=2, y=4, w=2;
-double p=2.2d, q = 2.3d;
-double r = 2.2d, s = 3.4d;
-int a=2, b=3, c=45;
+//int x=2, y=true, w=2;
+//double p=2.2d, q = 'A';
+//double r = "somestring", s = 3.4d;
+//int a=2, b=2.2d, c=45;
 
 
 
@@ -103,10 +103,10 @@ boolean valid = true, humidity = false, temperature = true;
 
 
 // Uncomment to raise errors
-int x=2, y=4, w=2;
-double p=2.2d, q = 2.3d;
-double r = 2.2d, s = 3.4d;
-int a=2, b=3, c=45;
+//int x=2, y=4, w=true;
+//double p=2, q = 2.3d;
+//double r = "A", s = 3.4d;
+//int a=false, b=3, c=45;
 
 
 
@@ -174,13 +174,13 @@ return x;
 
 Public boolean main2() { return x + y / 2 * 7;}
 
-public class Germanios2 {//empty nested class}
+public class Germanios2 {}
 
-}//this is the end of the big class
-
-
-/*another class
+}
+/*comment
 */
+
+
 public class Germanios3 {
 
 Public int main2() { 
@@ -190,4 +190,4 @@ Public int main2() {
 return 0;
 }
 }
-//this is the end comment
+//end comment
