@@ -8,7 +8,7 @@ extern int yylex();
 extern FILE* yyin;
 extern int line_number;
 
-// Data structure for a symbol entry
+// Data structure to store variable name & expression type
 typedef struct {
     char name[256];        // Assuming maximum variable name length of 255 characters
     char expr_type[20];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
