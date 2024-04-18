@@ -2,7 +2,7 @@
 public class Germanios {   //big class
 
 
-// Single Assignments
+// Single Declaration Assignments
 int x = 2;
 double y = 2.2d;
 char x = '\n';
@@ -12,7 +12,7 @@ private boolean valid = true;
 boolean invalid = false;
 
 
-// Multiple Assignments 
+// Multiple Declaration Assignments 
 int x=2, y=4, w=2;
 double p=2.2d, q = 2.3d;
 double r = 2.2d, s = 3.4d;
@@ -76,7 +76,7 @@ public String x,y,z;
 boolean x,y,z;
 
 
-// Single Assignments
+// Single Declaration Assignments
 int x = 2;
 double y = 2.2d;
 char x = '\n';
@@ -86,7 +86,7 @@ private boolean valid = true;
 boolean invalid = false;
 
 
-// Multiple Assignments 
+// Multiple Declaration Assignments 
 int x=2, y=4, w=2;
 double p=2.2d, q = 2.3d;
 double r = 2.2d, s = 3.4d;
