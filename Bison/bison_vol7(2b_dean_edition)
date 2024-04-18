@@ -23,6 +23,12 @@ ExprEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
 
+// Function Signatures
+void add_symbol(char *name, char *expr_type);
+void clearTable(ExprEntry *data_table);
+int compareAll(ExprEntry *data_table);
+
+
 void yyerror(char *s) {
    fprintf(stderr, "Error at line %d: %s\n", line_number, s);
 }
