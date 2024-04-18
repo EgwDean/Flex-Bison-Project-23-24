@@ -7,6 +7,7 @@
 extern int yylex();
 extern FILE* yyin;
 extern int line_number;
+extern int method_count;
 
 // Data structure for a symbol entry
 typedef struct {
@@ -202,25 +203,31 @@ int compareAll(SymbolEntry *symbol_table) {
 program: c public_class c
         | program c public_class c
 	
-	{
-	clear_methods();
-	}
+
 	
 	;
 
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
 
 		{
-		clear_private_methods();
+		method_count = method_count - 1;
+
+			if (method_count == 0) {
+
+			// printf("\n original method \n");
+			clear_private_methods();
+
+			}
 		}
 
                 ;
 
 class_block: variable_declarations method_declarations nested_class
+
 		;
 
 
-nested_class: c public_class c | ;
+nested_class: public_class | nested_class c public_class | ;
 
 
 variable_declarations: variable_declaration | variable_declaration variable_declarations | ;
