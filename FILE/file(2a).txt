@@ -3,7 +3,7 @@
 public class Germanios {   //big class
 
 
-// Single Assignments
+// Single Declaration Assignments
 int x = 2;
 double y = 2.2d;
 char x = '\n';
@@ -51,7 +51,7 @@ Obj obj = new Obj();
 
 
 
-// Single Assignments
+// Single Declaration Assignments
 int x = 2;
 double y = 2.2d;
 char x = '\n';
