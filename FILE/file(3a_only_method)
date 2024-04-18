@@ -1,60 +1,79 @@
-//dfsdfsdfsdf
 public class Germanios {
 
 
-
-Private void main(int x, boolean z ) {
-
-return 0;
-}
+Private void main() {return 1;}
 
 
-protected int mperdougos (int z) {
-
-main();
-
-//mperdougos();
-
-return 1;
-}
+Public void main2() {return 1;}
 
 
-Private boolean faragki(){
-
-mperdougos(x,z,y);
-
-boom_boom = main();
-
-//bomba(bomba);
-
-return z + 2 * 7;
-}
+protected void main3() {return 1;}
 
 
 	public class C {
 
-		Public int main3() { 
-		main();  
-		return 0;
+
+	Private void main4() {return 1;}
+
+
+	
+		Public void method() {
+		
+		main();
+		
+		main2();
+
+		main3();
+
+		main4();
+
+		//main10();
+	
+		return 1;
 		}
 
+
 	}
+
+	
+	public class D {
+
+
+		Public void method1() {
+		
+		main();
+		
+		main4();
+
+		//main10();
+			
+		return 1;
+		}
+
+
+	}
+
 
 }
 
 
 public class B {
 
-Public void main2() { 
 
-mperdougos();
+		Public void method2() {
+		
+		method();
 
-main3();
+		method1();
 
-main(); 
-return 0;
+		main3();
 
-}
+		//main();
+
+		//main10();
+			
+		return 1;
+		}
 
 }
 
