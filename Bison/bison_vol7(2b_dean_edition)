@@ -12,14 +12,14 @@ extern int line_number;
 typedef struct {
     char name[256];        // Assuming maximum variable name length of 255 characters
     char data_type[20];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
-} SymbolEntry;
+} ExprEntry;
 
 
 // Maximum number of normal_types (adjust as needed)
 #define MAX_EXPR 100
 
 // Creating a table of normal_types and calling it "symbol_table"
-SymbolEntry symbol_table[MAX_EXPR];
+ExprEntry symbol_table[MAX_EXPR];
 int expr_count = 0;
 
 
@@ -42,7 +42,7 @@ void add_symbol(char *name, char *data_type) {
 
 
 // Function to clear the normal_types table
-void clearTable(SymbolEntry *symbol_table){
+void clearTable(ExprEntry *symbol_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
 		if (strcmp(symbol_table[i].data_type, "") != 0){ 
 			 strcpy(symbol_table[i].data_type, "");
@@ -51,7 +51,7 @@ void clearTable(SymbolEntry *symbol_table){
 }
 
 //Function to compare entries of normal_types table
-int compareAll(SymbolEntry *symbol_table) {
+int compareAll(ExprEntry *symbol_table) {
 							
 									
 	// Get the value of the first entry
