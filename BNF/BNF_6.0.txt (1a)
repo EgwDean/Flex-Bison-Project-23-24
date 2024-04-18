@@ -19,6 +19,8 @@
 
 <method_declaration> ::= <method_modifier> <return_type> <identifier> “(“ <parameters> “)” “{“ <method_block> <return> “}”
 
+<method_modifier> ::= "Public" | "Private" | ""
+
 <paramaters> ::= <data_type><identifier>
 | <data_type><identifier> “,” <parameters>
 | “”
