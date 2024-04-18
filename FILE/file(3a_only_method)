@@ -7,7 +7,7 @@ Private void main() {return 1;}
 Public void main2() {return 1;}
 
 
-protected void main3() {return 1;}
+Public void main3() {return 1;}
 
 
 	public class C {
@@ -50,6 +50,9 @@ protected void main3() {return 1;}
 		return 1;
 		}
 
+	
+		public class E {Public void method3() {main();  return 1;}}
+
 
 	}
 
@@ -67,6 +70,8 @@ public class B {
 		method1();
 
 		main3();
+		
+		//main4();
 
 		//main();
 
