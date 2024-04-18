@@ -11,7 +11,7 @@ extern int line_number;
 // Data structure for a symbol entry
 typedef struct {
     char name[256];        // Assuming maximum variable name length of 255 characters
-    char data_type[20];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
+    char expr_type[20];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
 } ExprEntry;
 
 
@@ -29,10 +29,10 @@ void yyerror(char *s) {
 
 
 // Function to add a normal_type to the normal_types table
-void add_symbol(char *name, char *data_type) {
+void add_symbol(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
         strcpy(symbol_table[expr_count].name, name);
-        strcpy(symbol_table[expr_count].data_type, data_type);
+        strcpy(symbol_table[expr_count].expr_type, expr_type);
         expr_count++;
     } else {
         fprintf(stderr, "Error: Expressions table full\n");
@@ -44,8 +44,8 @@ void add_symbol(char *name, char *data_type) {
 // Function to clear the normal_types table
 void clearTable(ExprEntry *symbol_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
-		if (strcmp(symbol_table[i].data_type, "") != 0){ 
-			 strcpy(symbol_table[i].data_type, "");
+		if (strcmp(symbol_table[i].expr_type, "") != 0){ 
+			 strcpy(symbol_table[i].expr_type, "");
 		}
 	}
 }
@@ -55,15 +55,15 @@ int compareAll(ExprEntry *symbol_table) {
 							
 									
 	// Get the value of the first entry
-	char *firstValue = symbol_table[0].data_type;
+	char *firstValue = symbol_table[0].expr_type;
 
 	// Iterate over the remaining entries and compare their values
 	for (int i = 1; i < MAX_EXPR; i++) {
 		
-		if (strcmp(symbol_table[i].data_type, "") != 0){
+		if (strcmp(symbol_table[i].expr_type, "") != 0){
 			
 			// If any value is different from the first one, return 0
-			if (strcmp(firstValue, symbol_table[i].data_type) != 0) {
+			if (strcmp(firstValue, symbol_table[i].expr_type) != 0) {
 								
 			return 0;
 			}
