@@ -1,1 +1,1 @@
-# Comments inside a nested class are not allowed - Babos noticed it please check it out
+# Only comments existing inside a class block (nested or not)  are not allowed. The way our Grammar is, if i create a class then i have to write code in it. I cannot only have comments inside the class block. The question is: Do i want his behaviour?
