@@ -106,7 +106,6 @@ int compareAll(SymbolEntry *symbol_table) {
 %type <str> variable
 %type <str> data_type
 %type <str> normal_type                  //only normal_type assignments with same line variable declarations
-%type <str> extra_assigned_variables
 
 
 %%
