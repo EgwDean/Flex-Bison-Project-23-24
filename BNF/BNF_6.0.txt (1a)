@@ -101,7 +101,7 @@
 
 <data_type> ::= "int" | "char" | "double" | "boolean" | "String"
 
-<return_type> ::= <data_type> | <void>
+<return_type> ::= <data_type> | ""
 
 <literal> ::= <integer_literal> | <char_literal> | <double_literal> | <boolean_literal> | <string_literal>
 
