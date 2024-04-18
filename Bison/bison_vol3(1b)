@@ -1,3 +1,4 @@
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,6 +21,12 @@ void yyerror(const char *s) {
 %token MUL DIV PLUS MINUS DO WHILE AND OR CHECK_EQUAL LESS GREATER NOT_EQUAL FOR SWITCH CASE 
 %token DOUBLE_DOT DEFAULT BREAK PRINT IF ELSE ELSE_IF
 %token SINGLE_COMMENT MULTILINE_COMMENT
+
+
+%union {
+ char *str;
+}
+
 
 
 %%
@@ -162,7 +169,7 @@ return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ;
 data_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
 
 
-method_modifier: M_PUBLIC | M_PRIVATE | PROTECTED ;
+method_modifier: M_PUBLIC | M_PRIVATE ;
 
 
 variable: VAR ;
