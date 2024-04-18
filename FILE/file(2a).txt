@@ -1,69 +1,129 @@
 
-/*lkjlkj*/
-//dfsdfsdfsdf
-public class Germanios {
+//This is a comment outside of classes
+public class Germanios {   //big class
 
-//lalalal
-private String dean = "dyo metra";
 
-//afasdfsdfasdfsfasdfsdafasdfsadf
-public int mPamphs_31 = 3, ntindon = 4, xaxa = 5;
-Kati antikeimeno = new Allo();    
+// Single Assignments
+int x = 2;
+double y = 2.2d;
+char x = '\n';
+char symbol2 = 'A';
+String name = "my_name";
+private boolean valid = true;
+boolean invalid = false;
 
-//sd
-boolean theo;
 
-//asdasdasdasd
+// Uncomment to raise errors
+//int  z = 2.2d;
+//double w = 2;	                               
+
+
+// Uncomment to raise errors
+//int x=2, y=true, w=2;
+//double p=2.2d, q = 'A';
+//double r = "somestring", s = 3.4d;
+//int a=2, b=2.2d, c=45;
+
+
+
+//Single Declarations
+int x;
+double x;
+char x;
+String x;
+boolean x;
+Obj obj = new Obj();
+
+
+// This does not work BUT IT IS NOT WANTED IN THE EXERCISE
+//int x = 12 + 5.4d / y * 3; 
+
+
 Public void main(int x, boolean z ) {
 
-Obj obj = new Obj(); 
-int x = 6, ntindon = 5, xaxa = 4;
-boolean lebron = false; //asdas
-ko = '\n';
-oLAHTIPOTA = "eimai trelos &^^$";
-x = 5;
-y = 27.23d;
+//Single Declarations
+int x;
+double x;
+char x;
+String x;
+boolean x;
+Obj obj = new Obj();
 
 
-/*jcneicneicn*/
-meth_call = meth(true, 5, lEMAO);
+
+// Single Assignments
+int x = 2;
+double y = 2.2d;
+char x = '\n';
+char symbol2 = 'A';
+String name = "my_name";
+private boolean valid = true;
+boolean invalid = false;
+
+
+// Uncomment to raise errors
+//int  z = 2.2d;
+//double w = 2;	                               
+
+
+// Uncomment to raise errors
+//int x=2, y=4, w=true;
+//double p=2, q = 2.3d;
+//double r = "A", s = 3.4d;
+//int a=false, b=3, c=45;
+
+
+
+
+
+
+// Commands
+
+
+// Assignments
+x = 2;
+y = 2.2d;
+z = '\n';
+symbol2 = 'O';
+name = "my_name";
+valid = false;
+invalid = true;
 xyz = 5 * 7 / 9 + 72;
-mE_EXOYNE_TRLANE = pame.kala(1,2,3,5.5d,x,y,z);
+meth_call = meth(true, 5, lEMAO);
+method_access = object.its_method(1,2,3,5.5d,x,y,z);
 
 
-//sadfsadf
-if (eimai_oraios == true && den_leo_psemata != 7) {
-out.print("Eimai magkas", xasa, giolo_93);
+//this is a comment
+if (humidity == true && temperature != 7) {
+out.print("This is the right one", weather, variants);
 }
-//ola ola ola
-else if (o_dean_einai_oraios == true) {
-ypsos_dean = 2.00d;
+//this is a comment
+else if (rain == true) {
+height = 2.00d;
 x = x + y + 10;
 x = 32.5d + 12;
 }
-else { /*hehehe*/
+else { /*commenting...*/
 for (i=0; i<12; i = i+3){
 xyz = 5 * 7 / 9 + 72;
-out.print("O mpampahs einai kouklos");
+out.print("Inside the for");
 }
-}//a
+}//this is a comment
 
-x = 5;
-y = 27.23d;
 
-//a
+//this is a comment
 do {
-tranos = '\n';
-den_jero_ti_allh_entolh_na_balo = true;
+symbol = '\n';
+occupied = true;
 }
-while (horizon_mexri_tis_6 == true && 5<7 || 8>x);
-//hehe
+while (occupied == true && 5<7 || 8>x);
+//this is a comment
 
 
-switch(o_koutras_einai_alvanos) {
+switch(temp) {
 
-case true: //oxi
-out.print("DEN JER TI ALLO NA BALO THEE MOU"); //asd
+case true: //this is a comment
+out.print("It is true"); //commenting
 
 case false:
 
@@ -71,7 +131,7 @@ default:
 x = 7/9 ;
 break; 
 }
-//hello
+//this is a comment
 
 return x;
 }
@@ -80,10 +140,11 @@ Public boolean main2() { return x + y / 2 * 7;}
 
 public class Germanios2 {}
 
-}//asas
-
-/*lk
+}
+/*comment
 */
+
+
 public class Germanios3 {
 
 Public int main2() { 
@@ -93,4 +154,4 @@ Public int main2() {
 return 0;
 }
 }
-//asdasd
+//end comment
