@@ -23,12 +23,6 @@ SymbolEntry symbol_table[MAX_EXPR];
 int expr_count = 0;
 
 
-// Function Signatures
-void add_symbol(char *name, char *data_type);
-void clearTable(SymbolEntry *symbol_table);
-int compareAll(SymbolEntry *symbol_table);
-
-
 void yyerror(char *s) {
    fprintf(stderr, "Error at line %d: %s\n", line_number, s);
 }
