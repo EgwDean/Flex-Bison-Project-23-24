@@ -34,7 +34,7 @@ class_block: variable_declarations method_declarations nested_class
 		;
 
  
-nested_class: c public_class c | ;
+nested_class: public_class | nested_class c public_class | ;
 
 
 variable_declarations: variable_declaration | variable_declaration variable_declarations | ;
