@@ -12,7 +12,7 @@ extern int method_count;
 // Data structure for a symbol entry
 typedef struct {
     char name[256];        // Assuming maximum variable name length of 255 characters
-    char data_type[20];   // Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
+    char data_type[20];   // Data type: INT_NUM, DOUBLE_NUM, CHAR, BOOLEAN, STRING
 } SymbolEntry;
 
 
