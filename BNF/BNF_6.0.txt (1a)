@@ -144,7 +144,7 @@
 
 <digit> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
-<c> ::= <comment> | <c> <comment> | “”
+<c> ::= <comment> | <comment> <c> | “”
 
 <comment> ::= <one_line_comment> | <multiple_line_comment>
 
