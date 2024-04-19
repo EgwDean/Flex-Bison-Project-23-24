@@ -455,7 +455,7 @@ variable: VAR ;
 
 num: INT_NUM | DOUBLE_NUM ;
 
-c: comment | c comment | ;
+c: comment | comment c | ;
 
 comment: SINGLE_COMMENT | MULTILINE_COMMENT ;
 
