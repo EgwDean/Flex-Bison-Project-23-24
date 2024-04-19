@@ -117,7 +117,7 @@ program: c public_class c
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
                 ;
 
-class_block: c variable_declarations c method_declarations c nested_class c
+class_block: c variable_declarations method_declarations nested_class c
 		;
 
 
