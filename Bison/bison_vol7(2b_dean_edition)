@@ -117,7 +117,7 @@ program: c public_class c
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
                 ;
 
-class_block: variable_declarations method_declarations nested_class
+class_block: c variable_declarations c method_declarations c nested_class c
 		;
 
 
@@ -225,7 +225,7 @@ parameters: data_type variable
 	|;
 
 
-method_block: variable_declarations commands ;
+method_block: c variable_declarations c commands c ;
 
 
 commands: c command c | c command c commands | ;
