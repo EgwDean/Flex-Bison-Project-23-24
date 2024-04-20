@@ -38,8 +38,7 @@ program: c public_class c
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
                 ;
 
-class_block: variable_declarations method_declarations nested_class
-		;
+class_block: c variable_declarations method_declarations nested_class ;
 
 
 nested_class: c public_class c | ;
