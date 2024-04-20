@@ -35,7 +35,7 @@ boolean x;
 Obj obj = new Obj();
 
 
-// This does not work BUT IT IS NOT WANTED IN THE EXERCISE
+// For now this works only with Theofrastos bison edition
 //int x = 12 + 5.4d / y * 3; 
 
 
