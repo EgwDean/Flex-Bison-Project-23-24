@@ -221,7 +221,7 @@ return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ;
 data_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
 
 
-method_modifier: M_PUBLIC | M_PRIVATE | PROTECTED ;
+method_modifier: M_PUBLIC | M_PRIVATE ;
 
 
 variable: VAR ;
