@@ -7,6 +7,8 @@ public int y,z;
 
 int l = 5;
 
+int o;
+
 
 	Private void main() {
 	
@@ -23,6 +25,30 @@ int l = 5;
 	//n = 0;
 
 	return 1;
+	}
+
+
+	public class C {
+
+		Private void main2() {
+	
+		
+		x = 1;
+
+		//bob = 5;
+
+		y = 2;
+
+		z = 3;
+
+		l = 4;
+
+		
+
+		return 1;
+		}
+
+
 	}
 
 }
