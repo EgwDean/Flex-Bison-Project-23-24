@@ -1,4 +1,4 @@
-// This file is identical to file2b but with the "multiple declarations" and "declaration assignments" removed.
+// This file is identical to file1b but with added "Single & Multiple Declaration Assignments".
 //This is a comment outside of classes
 public class Germanios {   //big class
 
