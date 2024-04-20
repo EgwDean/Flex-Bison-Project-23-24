@@ -8,6 +8,7 @@ extern int yylex();
 extern FILE* yyin;
 extern int line_number;
 extern int method_count;
+extern int var_id_count;
 
 int declaration_flag = 0;
 char public_name[256];
@@ -350,7 +351,8 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 				if(declaration_flag == 1) {
 				 add_declaredVar(public_name, temp_type);
 				declaration_flag = 0; }
-
+				
+				if(var_id_count == 0) {
 				add_id($2, $4);
 				
 				for (int i = 0; i < 100; i++){
@@ -360,6 +362,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 				}			
 
 				clear_extra();
+				}
 			}
 			
 						| c CLASS_NAME variable EQUAL object_instance QMARK c
@@ -370,7 +373,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							add_symbol($4, $6);
 							add_declaredVar($4, $6);
 
-
+							if(var_id_count == 0) {
 							add_id($2, $4); //Πεταει segmatation
 				
 							for (int b = 0; b < 100; b++){
@@ -380,6 +383,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							}			
 
 							clear_extra();
+							}
 							 
 						}
 						c
@@ -475,6 +479,7 @@ method_declarations: c method_declaration c | c method_declaration c method_decl
 method_declaration: method_modifier return_type variable LEFT_BRACKET parameters RIGHT_BRACKET LEFT_BRACE method_block return RIGHT_BRACE
 	{	
 	add_method($1, $2, $3);
+	var_count = var_count - 1;
 	}
 	;
 
