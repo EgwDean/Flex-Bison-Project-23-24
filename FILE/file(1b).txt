@@ -2,21 +2,6 @@
 public class Germanios {   //big class
 
 
-
-
-// Uncomment to raise errors
-//int  z = 2.2d;
-//double w = 2;	                               
-
-
-// Uncomment to raise errors
-//int x=2, y=true, w=2;
-//double p=2.2d, q = 'A';
-//double r = "somestring", s = 3.4d;
-//int a=2, b=2.2d, c=45;
-
-
-
 //Single Declarations
 int x;
 double x;
@@ -24,10 +9,6 @@ char x;
 String x;
 boolean x;
 Obj obj = new Obj();
-
-
-// This does not work BUT IT IS NOT WANTED IN THE EXERCISE
-//int x = 12 + 5.4d / y * 3; 
 
 
 Public void main(int x, boolean z ) {
@@ -39,22 +20,6 @@ char x;
 String x;
 boolean x;
 Obj obj = new Obj();
-
-
-
-// Uncomment to raise errors
-//int  z = 2.2d;
-//double w = 2;	                               
-
-
-// Uncomment to raise errors
-//int x=2, y=4, w=true;
-//double p=2, q = 2.3d;
-//double r = "A", s = 3.4d;
-//int a=false, b=3, c=45;
-
-
-
 
 
 
