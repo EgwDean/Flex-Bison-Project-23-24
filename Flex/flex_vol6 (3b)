@@ -11,6 +11,7 @@
 %{
 int line_number = 1;      // Variable to store line number
 int method_count = 0;
+int var_id_count = 0;
 %}     
 
 
@@ -30,8 +31,9 @@ int method_count = 0;
 "private" { printf("%s", yytext); yylval.str = strdup(yytext); return PRIVATE; }
 "public" { printf("%s", yytext); yylval.str = strdup(yytext); return PUBLIC; }
 
-"Private" { printf("%s", yytext); yylval.str = strdup(yytext); return M_PRIVATE; }
-"Public" { printf("%s", yytext); yylval.str = strdup(yytext); return M_PUBLIC; }
+"Private" { printf("%s", yytext); var_id_count++; yylval.str = strdup(yytext); return M_PRIVATE; }
+"Public" { printf("%s", yytext); var_id_count++; yylval.str = strdup(yytext); return M_PUBLIC; }
+
 "void" { printf("%s", yytext); yylval.str = strdup(yytext); return VOID; }
 "return" { printf("%s", yytext); return RETURN; }
 "true" { printf("%s", yytext); yylval.str = strdup("BOOLEAN"); return TRUE; }
