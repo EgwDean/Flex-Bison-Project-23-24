@@ -13,7 +13,7 @@ private boolean valid = true;
 boolean invalid = false;
 
 
-// Uncomment to raise errors
+// These will not raise errors yet
 //int  z = 2.2d;
 //double w = 2;	                               
 
@@ -61,7 +61,7 @@ private boolean valid = true;
 boolean invalid = false;
 
 
-// Uncomment to raise errors
+// These will not raise errors yet
 //int  z = 2.2d;
 //double w = 2;	                               
 
