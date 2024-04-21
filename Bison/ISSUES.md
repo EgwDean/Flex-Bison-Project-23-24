@@ -6,4 +6,3 @@ int x = 12 + 5.4d / y * 3;    --> "declaration assignment to operation"
 
 <br><br>
 
-<p><strong>&#x2022;&nbsp; Error: Undeclared variable στο bison_vol9(3b) με το problematic file.</strong></p>
