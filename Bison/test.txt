@@ -1,0 +1,11 @@
+public class Germanios3 {
+public int x;
+
+Public int main2() { 
+
+ x = 5 + 5;
+
+return 0;
+}
+
+}
