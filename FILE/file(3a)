@@ -102,7 +102,7 @@ public class B {
 			method1();
 
 			main3();
-			//main();
+			//main();  αυτο το δεχεται ενω δε θα επρεπε
 			
 			return 1;
 		}
