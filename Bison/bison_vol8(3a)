@@ -20,10 +20,10 @@ int var_num = 0;
 typedef struct {
     char name[256];        		// Assuming maximum variable name length of 255 characters
     char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
-} SymbolEntry, DeclaredVar;
+} ExprEntry, DeclaredVar;
 
 // Creating a table of normal_types and calling it "data_table"
-SymbolEntry data_table[MAX_EXPR];
+ExprEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
 DeclaredVar declaredVar_table[MAX_EXPR];
@@ -116,7 +116,7 @@ void add_declaredVar(char *name, char *expr_type) {
 
 
 // Function to clear the normal_types table
-void clearTable(SymbolEntry *data_table){
+void clearTable(ExprEntry *data_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
 		if (strcmp(data_table[i].expr_type, "") != 0){ 
 			 strcpy(data_table[i].expr_type, "");
@@ -125,7 +125,7 @@ void clearTable(SymbolEntry *data_table){
 }
 
 //Function to compare entries of normal_types table
-int compareAll(SymbolEntry *data_table) {
+int compareAll(ExprEntry *data_table) {
 							
 									
 	// Get the value of the first entry
