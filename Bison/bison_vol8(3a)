@@ -22,8 +22,8 @@ typedef struct {
     char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } SymbolEntry, DeclaredVar;
 
-// Creating a table of normal_types and calling it "symbol_table"
-SymbolEntry symbol_table[MAX_EXPR];
+// Creating a table of normal_types and calling it "data_table"
+SymbolEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
 DeclaredVar declaredVar_table[MAX_EXPR];
@@ -92,8 +92,8 @@ void clear_private_methods() {
 // Function to add a normal_type to the normal_types table
 void add_symbol(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
-        strcpy(symbol_table[expr_count].name, name);
-        strcpy(symbol_table[expr_count].expr_type, expr_type);
+        strcpy(data_table[expr_count].name, name);
+        strcpy(data_table[expr_count].expr_type, expr_type);
         expr_count++;
     } else {
         fprintf(stderr, "Error: Expressions table full\n");
@@ -116,28 +116,28 @@ void add_declaredVar(char *name, char *expr_type) {
 
 
 // Function to clear the normal_types table
-void clearTable(SymbolEntry *symbol_table){
+void clearTable(SymbolEntry *data_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
-		if (strcmp(symbol_table[i].expr_type, "") != 0){ 
-			 strcpy(symbol_table[i].expr_type, "");
+		if (strcmp(data_table[i].expr_type, "") != 0){ 
+			 strcpy(data_table[i].expr_type, "");
 		}
 	}
 }
 
 //Function to compare entries of normal_types table
-int compareAll(SymbolEntry *symbol_table) {
+int compareAll(SymbolEntry *data_table) {
 							
 									
 	// Get the value of the first entry
-	char *firstValue = symbol_table[0].expr_type;
+	char *firstValue = data_table[0].expr_type;
 
 	// Iterate over the remaining entries and compare their values
 	for (int i = 1; i < MAX_EXPR; i++) {
 		
-		if (strcmp(symbol_table[i].expr_type, "") != 0){
+		if (strcmp(data_table[i].expr_type, "") != 0){
 			
 			// If any value is different from the first one, return 0
-			if (strcmp(firstValue, symbol_table[i].expr_type) != 0) {
+			if (strcmp(firstValue, data_table[i].expr_type) != 0) {
 								
 			return 0;
 			}
@@ -271,14 +271,14 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 						c
 						{	
 							
-							if (!compareAll(symbol_table)) {
+							if (!compareAll(data_table)) {
 								printf("Error: Expressions are not all of the same type.\n");
 								exit(EXIT_FAILURE);
 							} 
 							else {
 								
 								expr_count=0;
-								clearTable(symbol_table);
+								clearTable(data_table);
 							}
 						}
 						c
