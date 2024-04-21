@@ -18,7 +18,7 @@ typedef struct {
 // Maximum number of normal_types (adjust as needed)
 #define MAX_EXPR 100
 
-// Creating a table of normal_types and calling it "data_table"
+// Creating a table of type ExprEntry and calling it "data_table"
 ExprEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
