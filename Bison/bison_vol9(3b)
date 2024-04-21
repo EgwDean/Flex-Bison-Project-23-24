@@ -486,7 +486,7 @@ method_declarations: c method_declaration c | c method_declaration c method_decl
 method_declaration: method_modifier return_type variable LEFT_BRACKET parameters RIGHT_BRACKET LEFT_BRACE method_block return RIGHT_BRACE
 	{	
 	add_method($1, $2, $3);
-	var_count = var_count - 1;
+	var_id_count = var_id_count - 1;
 	}
 	;
 
