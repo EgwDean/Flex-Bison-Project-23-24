@@ -20,11 +20,11 @@ int var_num = 0;
 // Data structure for a symbol entry
 typedef struct {
     char name[256];        		// Assuming maximum variable name length of 255 characters
-    char data_type[20];   	 	// Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
-} SymbolEntry, DeclaredVar;
+    char expr_type[20];   	 	// Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
+} ExprEntry, DeclaredVar;
 
-// Creating a table of normal_types and calling it "symbol_table"
-SymbolEntry symbol_table[MAX_EXPR];
+// Creating a table of normal_types and calling it "data_table"
+ExprEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
 DeclaredVar declaredVar_table[MAX_EXPR];
@@ -171,10 +171,10 @@ void clear_private_methods() {
 
 
 // Function to add a normal_type to the normal_types table
-void add_symbol(char *name, char *data_type) {
+void add_symbol(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
-        strcpy(symbol_table[expr_count].name, name);
-        strcpy(symbol_table[expr_count].data_type, data_type);
+        strcpy(data_table[expr_count].name, name);
+        strcpy(data_table[expr_count].expr_type, expr_type);
         expr_count++;
     } else {
         fprintf(stderr, "Error: Expressions table full\n");
@@ -184,10 +184,10 @@ void add_symbol(char *name, char *data_type) {
 
 
 // Function to add a variable to the declared variables table
-void add_declaredVar(char *name, char *data_type) {
+void add_declaredVar(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
         strcpy(declaredVar_table[var_count].name, name);
-        strcpy(declaredVar_table[var_count].data_type, data_type);
+        strcpy(declaredVar_table[var_count].expr_type, expr_type);
         var_count++;
     } else {
         fprintf(stderr, "Error: Declared variables' table full\n");
@@ -197,28 +197,28 @@ void add_declaredVar(char *name, char *data_type) {
 
 
 // Function to clear the normal_types table
-void clearTable(SymbolEntry *symbol_table){
+void clearTable(ExprEntry *data_table){
 	 for (int i = 1; i < MAX_EXPR; i++) {  
-		if (strcmp(symbol_table[i].data_type, "") != 0){ 
-			 strcpy(symbol_table[i].data_type, "");
+		if (strcmp(data_table[i].expr_type, "") != 0){ 
+			 strcpy(data_table[i].expr_type, "");
 		}
 	}
 }
 
 //Function to compare entries of normal_types table
-int compareAll(SymbolEntry *symbol_table) {
+int compareAll(ExprEntry *data_table) {
 							
 									
 	// Get the value of the first entry
-	char *firstValue = symbol_table[0].data_type;
+	char *firstValue = data_table[0].expr_type;
 
 	// Iterate over the remaining entries and compare their values
 	for (int i = 1; i < MAX_EXPR; i++) {
 		
-		if (strcmp(symbol_table[i].data_type, "") != 0){
+		if (strcmp(data_table[i].expr_type, "") != 0){
 			
 			// If any value is different from the first one, return 0
-			if (strcmp(firstValue, symbol_table[i].data_type) != 0) {
+			if (strcmp(firstValue, data_table[i].expr_type) != 0) {
 								
 			return 0;
 			}
@@ -241,7 +241,7 @@ char *searchVariable(char *varName) {
         if (strcmp(varName, declaredVar_table[i].name) == 0) {
             strcpy(foundVar, declaredVar_table[i].name); // Store the found variable name
             found = 1;
-            return declaredVar_table[i].data_type;
+            return declaredVar_table[i].expr_type;
         }
     }
     if(!found) {
@@ -277,7 +277,7 @@ void yyerror(char *s) {
 %token SINGLE_COMMENT MULTILINE_COMMENT
 
 %type <str> variable
-%type <str> data_type
+%type <str> expr_type
 %type <str> normal_type                  //only normal_type assignments with same line variable declarations
 %type <str> method_modifier
 %type <str> return_type
@@ -324,7 +324,7 @@ variable_declarations: variable_declaration | variable_declaration variable_decl
 
 
 
-variable_declaration:   c variable_modifier data_type variable extra_variables QMARK c
+variable_declaration:   c variable_modifier expr_type variable extra_variables QMARK c
 			{
 				char temp_type[20];
 				strcpy(temp_type, "");
@@ -372,7 +372,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 			}
 			
 						| c CLASS_NAME variable EQUAL object_instance QMARK c
-						| c variable_modifier data_type variable EQUAL normal_type extra_assigned_variables QMARK c
+						| c variable_modifier expr_type variable EQUAL normal_type extra_assigned_variables QMARK c
 						{		
  							
 							// Add the first variable and its expression to the symbol table
@@ -398,14 +398,14 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 						c
 						{	
 							
-							if (!compareAll(symbol_table)) {
+							if (!compareAll(data_table)) {
 								printf("Error: Expressions are not all of the same type.\n");
 								exit(EXIT_FAILURE);
 							} 
 							else {
 								
 								expr_count=0;
-								clearTable(symbol_table);
+								clearTable(data_table);
 							}
 						}
 						c
@@ -470,7 +470,7 @@ extra_variables: | COMMA variable extra_variables
 extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_variables 
                           {
 					
-					// Add extra variables and their assigned expressions to symbol_table 
+					// Add extra variables and their assigned expressions to data_table 
 					add_symbol($2, $4);
 					add_declaredVar($2, $4);
 				
@@ -491,8 +491,8 @@ method_declaration: method_modifier return_type variable LEFT_BRACKET parameters
 	;
 
 
-parameters: data_type variable
-	| data_type variable COMMA parameters
+parameters: expr_type variable
+	| expr_type variable COMMA parameters
 	|;
 
 
@@ -626,7 +626,7 @@ variable_modifier: PUBLIC | PRIVATE | ;
 return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ; 
 
 
-data_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
+expr_type: INT | DOUBLE | CHAR | BOOLEAN | STRING ;
 
 
 method_modifier: M_PUBLIC | M_PRIVATE ;
