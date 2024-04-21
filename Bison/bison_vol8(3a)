@@ -22,7 +22,7 @@ typedef struct {
     char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } ExprEntry, DeclaredVar;
 
-// Creating a table of normal_types and calling it "data_table"
+// Creating a table of type ExprEntry and calling it "data_table"
 ExprEntry data_table[MAX_EXPR];
 int expr_count = 0;
 
