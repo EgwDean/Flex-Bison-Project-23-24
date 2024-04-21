@@ -10,18 +10,18 @@ extern int line_number;
 extern int method_count;
 extern int var_id_count;
 
+// Maximum number of normal_types (adjust as needed)
+#define MAX_EXPR 100
+
 int declaration_flag = 0;
-char public_name[256];
+char public_name[256][MAX_EXPR];
+int var_num = 0;
 
 // Data structure for a symbol entry
 typedef struct {
     char name[256];        		// Assuming maximum variable name length of 255 characters
     char data_type[20];   	 	// Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
 } SymbolEntry, DeclaredVar;
-
-
-// Maximum number of normal_types (adjust as needed)
-#define MAX_EXPR 100
 
 // Creating a table of normal_types and calling it "symbol_table"
 SymbolEntry symbol_table[MAX_EXPR];
@@ -156,7 +156,7 @@ void check_method(const char *name) {
 
 // Removes the private methods from the table
 void clear_private_methods() {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 100; ++i) {
 	if (strcmp(m_table[i].method_modifier, "Private") == 0)
 	{
         strcpy(m_table[i].method_name, "");
@@ -184,7 +184,7 @@ void add_symbol(char *name, char *data_type) {
 
 
 // Function to add a variable to the declared variables table
-void add_declaredVar(char * name, char *data_type) {
+void add_declaredVar(char *name, char *data_type) {
     if (expr_count < MAX_EXPR) {
         strcpy(declaredVar_table[var_count].name, name);
         strcpy(declaredVar_table[var_count].data_type, data_type);
@@ -310,7 +310,9 @@ public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
 
                 ;
 
-class_block: c variable_declarations method_declarations nested_class ;
+class_block: variable_declarations method_declarations nested_class
+
+		;
 
 
 nested_class: public_class | nested_class c public_class | ;
@@ -343,13 +345,18 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 				
 				if(strcmp(temp_type, "") == 0) {
 				 fprintf(stderr, "Error: Unknown type\n");
+				 exit(EXIT_FAILURE);
 				} else {
 				add_declaredVar($4, temp_type); }
 
-				if(declaration_flag == 1) {
-				 add_declaredVar(public_name, temp_type);
-				declaration_flag = 0; }
-				
+				if(declaration_flag == 1) { 
+				 for(int i = 0; i < var_num; i++) {
+				  add_declaredVar(public_name[i], temp_type); } }
+			
+				var_num = 0;
+				declaration_flag = 0;
+
+
 				if(var_id_count == 0) {
 				add_id($2, $4);
 				
@@ -361,6 +368,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
 				clear_extra();
 				}
+
 			}
 			
 						| c CLASS_NAME variable EQUAL object_instance QMARK c
@@ -370,6 +378,7 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 							// Add the first variable and its expression to the symbol table
 							add_symbol($4, $6);
 							add_declaredVar($4, $6);
+
 
 							if(var_id_count == 0) {
 							add_id($2, $4); //Πεταει segmatation
@@ -382,6 +391,8 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 
 							clear_extra();
 							}
+
+
 							 
 						}
 						c
@@ -448,13 +459,11 @@ variable_declaration:   c variable_modifier data_type variable extra_variables Q
 extra_variables: | COMMA variable extra_variables
 		{
 			declaration_flag = 1;
-			strcpy(public_name, $2);
-			add_declaredVar($2, "");
-			var_count--;
+			strcpy(public_name[var_num], $2);
+			var_num++;
 
+			add_extra($2);
 
-			add_extra($2);	
-		
 		};
 
 
@@ -464,7 +473,7 @@ extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_vari
 					// Add extra variables and their assigned expressions to symbol_table 
 					add_symbol($2, $4);
 					add_declaredVar($2, $4);
-
+				
 					add_extra($2);	
 					
                           };
@@ -499,13 +508,13 @@ command: assignment | do_loop | for_loop | switch_case | break | method_call QMA
 assignment: VAR EQUAL expression QMARK | VAR EQUAL normal_type QMARK
 {
 
+
 	check_var_private($1);
-	
 
 	char* foundVariableType = searchVariable($1);
 	if(strcmp(foundVariableType, "") == 0)
 		{
-			fprintf(stderr, "Error: Undeclared variable");
+			fprintf(stderr, "Error: Undeclared variable\n");
 			exit(EXIT_FAILURE);
 		}
 	else
@@ -516,10 +525,6 @@ assignment: VAR EQUAL expression QMARK | VAR EQUAL normal_type QMARK
 						exit(EXIT_FAILURE);
 					}
 		}
-
-
-	
-
 };
 
 member_access: variable DOT variable LEFT_BRACKET arguments RIGHT_BRACKET
