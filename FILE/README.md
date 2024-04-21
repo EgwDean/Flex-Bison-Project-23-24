@@ -8,6 +8,8 @@ File:  file(2b).txt is for testing with the parsers:  bison_vol6(2b_theo_edition
 
 File:  file(3a).txt is for testing with the parser:  bison_vol8(3a)
 
+File:  file(3b_method_example) is for testing with the parser:  bison_vol9(3b)
+
 <br><br>
 
 
