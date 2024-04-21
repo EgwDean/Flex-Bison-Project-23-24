@@ -28,6 +28,14 @@ int o;
 	}
 
 
+	Private void main10() {
+
+	//bob = 10;
+
+	return 1;
+	}
+
+
 	public class C {
 
 		Private void main2() {
