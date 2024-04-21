@@ -171,7 +171,7 @@ void clear_private_methods() {
 
 
 // Function to add a normal_type to the normal_types table
-void add_symbol(char *name, char *expr_type) {
+void addVar(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
         strcpy(data_table[expr_count].name, name);
         strcpy(data_table[expr_count].expr_type, expr_type);
@@ -376,7 +376,7 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 						{		
  							
 							// Add the first variable and its expression to the symbol table
-							add_symbol($4, $6);
+							addVar($4, $6);
 							add_declaredVar($4, $6);
 
 
@@ -471,7 +471,7 @@ extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_vari
                           {
 					
 					// Add extra variables and their assigned expressions to data_table 
-					add_symbol($2, $4);
+					addVar($2, $4);
 					add_declaredVar($2, $4);
 				
 					add_extra($2);	
