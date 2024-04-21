@@ -34,7 +34,7 @@ void yyerror(char *s) {
 }
 
 
-// Function to add a normal_type to the normal_types table
+// Function to add a variable and its normal_type to the data_table
 void addVar(char *name, char *expr_type) {
     if (expr_count < MAX_EXPR) {
         strcpy(data_table[expr_count].name, name);
