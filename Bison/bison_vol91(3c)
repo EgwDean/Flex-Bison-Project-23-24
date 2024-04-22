@@ -287,15 +287,13 @@ void yyerror(char *s) {
 %type <str> return_type
 %type <str> variable_modifier
 %type <db> operations
+%type <db> num
 
 %%
 
 program: c public_class c
         | program c public_class c
-	
-
-	
-	;
+		;
 
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
 
@@ -555,7 +553,7 @@ arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA
 expression: member_access | method_call ;
 
 
-operations:   operations PLUS operations 	      { $$ = $1 + $3 ; } 
+operations:   operations PLUS operations  { $$ = $1 + $3 ; } 
 			| operations MINUS operations { $$ = $1 - $3 ; }
 			| operations MUL operations   { $$ = $1 * $3 ; }
 			| operations DIV operations   { $$ = $1 / $3 ; }
