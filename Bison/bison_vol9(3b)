@@ -20,7 +20,7 @@ int var_num = 0;
 // Data structure to store variable name & expression type
 typedef struct {
     char name[256];        		// Assuming maximum variable name length of 255 characters
-    char expr_type[20];   	 	// Data type: INT, DOUBLE, CHAR, BOOLEAN, STRING
+    char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } ExprEntry, DeclaredVar;
 
 // Creating a table of normal_types and calling it "data_table"
