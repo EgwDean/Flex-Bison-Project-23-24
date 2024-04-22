@@ -10,7 +10,7 @@ extern FILE* yyin;
 extern int line_number;
 extern int method_count;
 extern int var_id_count;
-extern char numval[10];
+extern char numval[50];    // Variable to store yytext from INT_NUM and DOUBLE_NUM
 
 
 // Maximum number of normal_types (adjust as needed)
