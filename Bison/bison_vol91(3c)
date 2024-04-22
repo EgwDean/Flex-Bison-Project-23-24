@@ -261,7 +261,7 @@ void yyerror(char *s) {
 
 %union {
  char *str;
- char *str2;     // For operations only
+ char *str2;
 }
 
 
@@ -512,7 +512,7 @@ assignment: VAR EQUAL expression QMARK
 	    | VAR EQUAL operations QMARK 
 	    { 
 		char *eptr;
-		printf("Result is:  %lf \n", strtod($3, &eptr)); 
+		printf("Value of %s is:  %lf \n", $1, strtod($3, &eptr)); 
 	    }
 
 	    | VAR EQUAL normal_type QMARK
