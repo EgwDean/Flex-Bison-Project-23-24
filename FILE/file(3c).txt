@@ -1,9 +1,9 @@
 public class Germanios3 {
-public int x;
+
 
 Public int main2() { 
 
- x = 5 + 5;
+ x = 7 + 5 * 5 / 4;
 
 return 0;
 }
