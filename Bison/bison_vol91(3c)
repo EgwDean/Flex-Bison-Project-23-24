@@ -269,8 +269,8 @@ void yyerror(char *s) {
 %token <str> VAR
 %token <str> INT DOUBLE CHAR BOOLEAN STRING 
 %token <str> M_PUBLIC M_PRIVATE VOID
-%token <str> DOUBLE_NUM INT_NUM CHAR_VAR STRING_VAR TRUE FALSE 
-%token DOT LEFT_BRACKET RIGHT_BRACKET COMMA  MUL DIV PLUS MINUS
+%token <str> INT_NUM DOUBLE_NUM CHAR_VAR STRING_VAR TRUE FALSE 
+%token DOT LEFT_BRACKET RIGHT_BRACKET COMMA  MUL DIV PLUS MINUS  
 %token EQUAL NEW   
 %token RETURN
 %token DO WHILE AND OR CHECK_EQUAL LESS GREATER NOT_EQUAL FOR SWITCH CASE 
@@ -509,8 +509,14 @@ commands: c command c | c command c commands | ;
 command: assignment | do_loop | for_loop | switch_case | break | method_call QMARK | print | if_else ;
 
 
-assignment: VAR EQUAL expression QMARK | VAR EQUAL normal_type QMARK
-{
+assignment: VAR EQUAL expression QMARK 
+	    | VAR EQUAL operations QMARK 
+	    { 
+		printf("Result is:  %lf \n", $3); 
+	    }
+
+	    | VAR EQUAL normal_type QMARK
+	    {
 
 
 	check_var_private($1);
@@ -546,13 +552,13 @@ method_call: variable LEFT_BRACKET arguments RIGHT_BRACKET
 arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA arguments | ; 
 
 
-expression: member_access | method_call | operations ;
+expression: member_access | method_call ;
 
 
-operations:   operations PLUS operations  { $$ = $1 + $3 ; printf("Result is:  %lf \n", $$);   } 
-			| operations MINUS operations { $$ = $1 - $3 ; printf("Result is:  %lf \n", $$);   }
-			| operations MUL operations   { $$ = $1 * $3 ; printf("Result is:  %lf \n", $$);   }
-			| operations DIV operations   { $$ = $1 / $3 ; printf("Result is:  %lf \n", $$);   }
+operations:   operations PLUS operations 	      { $$ = $1 + $3 ; } 
+			| operations MINUS operations { $$ = $1 - $3 ; }
+			| operations MUL operations   { $$ = $1 * $3 ; }
+			| operations DIV operations   { $$ = $1 / $3 ; }
 			| num 
 			;
 
