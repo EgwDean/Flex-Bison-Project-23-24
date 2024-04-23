@@ -7,4 +7,4 @@ int x = 12 + 5.4d / y * 3;    --> "declaration assignment to operation"
 <br><br>
 
 
-<p><strong>&#x2022;&nbsp; Δοκίμασε να τρέξεις το bison(3b) και με τα files 2b, 1b για να δεις οτι μαλακίζεται </strong></p>
+<p><strong>&#x2022;&nbsp; Δοκίμασε να τρέξεις το bison(3b) και με τα files 2a,b, 1b για να δεις οτι μαλακίζεται </strong></p>
