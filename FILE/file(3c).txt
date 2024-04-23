@@ -1,4 +1,4 @@
-//This file is for testing scopes of variables
+//This file is for testing operations
 public class Germanios {
 
 
