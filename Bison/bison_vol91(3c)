@@ -263,7 +263,6 @@ void yyerror(char *s) {
 
 %union {
  char *str;
- char *str2;
 }
 
 
