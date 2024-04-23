@@ -512,7 +512,7 @@ command: assignment | do_loop | for_loop | switch_case | break | method_call QMA
 assignment: VAR EQUAL expression QMARK 
 	    | VAR EQUAL operations QMARK 
 	    { 
-		// Print result of operation 
+		// Print result of operation as a double
 		char *eptr;
 		printf("Value of %s is:  %lf \n", $1, strtod($3, &eptr)); 
 	    }
