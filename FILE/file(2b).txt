@@ -4,7 +4,7 @@ public class Germanios {   //big class
 
 
 // Single Declaration Assignments
-private int x = 2;
+int x = 2;
 double y = 2.2d;
 char x = '\n';
 char symbol2 = 'A';
