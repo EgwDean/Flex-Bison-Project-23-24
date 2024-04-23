@@ -835,7 +835,7 @@ print: PRINT LEFT_BRACKET STRING_VAR print_vars RIGHT_BRACKET QMARK ;
 print_vars: COMMA variable | COMMA variable print_vars | ;
 
 
-variable_modifier: PUBLIC | PRIVATE | ;
+variable_modifier: PUBLIC | PRIVATE ;
 
 
 return_type: INT | DOUBLE | CHAR | BOOLEAN | STRING | VOID ; 
