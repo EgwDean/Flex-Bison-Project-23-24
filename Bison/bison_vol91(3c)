@@ -295,7 +295,10 @@ void yyerror(char *s) {
 
 program: c public_class c
         | program c public_class c
-		;
+	
+
+	
+	;
 
 public_class: PUBLIC_CLASS CLASS_NAME LEFT_BRACE class_block RIGHT_BRACE
 
@@ -368,10 +371,23 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 					if (strcmp(ex_table[i].name, "") != 0) {
 						add_id($2, ex_table[i].name);
 					}
-				}			
+				}
+				
+				}
+
+
+				if(var_id_count > 0) {
+				add_id("method", $4);
+				
+				for (int i = 0; i < 100; i++){
+					if (strcmp(ex_table[i].name, "") != 0) {
+						add_id("method", ex_table[i].name);
+					}
+				}
+				
+				}
 
 				clear_extra();
-				}
 
 			}
 			
@@ -385,17 +401,30 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 
 
 							if(var_id_count == 0) {
-							add_id($2, $4); 
+							add_id($2, $4); //Πεταει segmatation
 				
 							for (int b = 0; b < 100; b++){
 								if (strcmp(ex_table[b].name, "") != 0) {
 								add_id($2, ex_table[b].name);
 								}
-							}			
-
-							clear_extra();
 							}
 
+							}
+
+
+
+							if(var_id_count > 0) {
+							add_id("method", $4);
+				
+								for (int i = 0; i < 100; i++){
+									if (strcmp(ex_table[i].name, "") != 0) {
+									add_id("method", ex_table[i].name);
+									}
+								}
+				
+							}
+
+							clear_extra();
 
 							 
 						}
@@ -456,7 +485,163 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 										}
 								}
 						
-						}						
+						}
+
+| c expr_type variable extra_variables QMARK c
+			{
+				char temp_type[20];
+				strcpy(temp_type, "");
+				
+				if (strcmp($2, "int") == 0) {
+   				 strcpy(temp_type, "INT_NUM");
+				} else if (strcmp($2, "double") == 0) {
+ 				   strcpy(temp_type, "DOUBLE_NUM");
+				} else if (strcmp($2, "boolean") == 0) {
+ 				   strcpy(temp_type, "BOOLEAN");
+				} else if (strcmp($2, "String") == 0) {
+ 				   strcpy(temp_type, "STRING_VAR");
+				} else if (strcmp($2, "char") == 0) {
+  				  strcpy(temp_type, "CHAR_VAR");
+				} else {
+ 				   strcpy(temp_type, "");
+				}
+				
+				if(strcmp(temp_type, "") == 0) {
+				 fprintf(stderr, "Error: Unknown type\n");
+				 exit(EXIT_FAILURE);
+				} else {
+				add_declaredVar($3, temp_type); }
+
+				if(declaration_flag == 1) { 
+				 for(int i = 0; i < var_num; i++) {
+				  add_declaredVar(public_name[i], temp_type); } }
+			
+				var_num = 0;
+				declaration_flag = 0;
+
+
+				if(var_id_count == 0) {
+				add_id("public", $3);
+				
+				for (int i = 0; i < 100; i++){
+					if (strcmp(ex_table[i].name, "") != 0) {
+						add_id("public", ex_table[i].name);
+					}
+				}
+				
+				}
+
+
+				if(var_id_count > 0) {
+				add_id("method", $3);
+				
+				for (int i = 0; i < 100; i++){
+					if (strcmp(ex_table[i].name, "") != 0) {
+						add_id("method", ex_table[i].name);
+					}
+				}
+				
+				}
+
+				clear_extra();
+
+			}
+			
+						| c expr_type variable EQUAL normal_type extra_assigned_variables QMARK c
+						{		
+ 							
+							// Add the first variable and its expression to the symbol table
+							addVar($3, $5);
+							add_declaredVar($3, $5);
+
+
+							if(var_id_count == 0) {
+							add_id("public", $3); //Πεταει segmatation
+				
+							for (int b = 0; b < 100; b++){
+								if (strcmp(ex_table[b].name, "") != 0) {
+								add_id("public", ex_table[b].name);
+								}
+							}
+
+							}
+
+
+
+							if(var_id_count > 0) {
+							add_id("method", $3);
+				
+								for (int i = 0; i < 100; i++){
+									if (strcmp(ex_table[i].name, "") != 0) {
+									add_id("method", ex_table[i].name);
+									}
+								}
+				
+							}
+
+							clear_extra();
+
+							 
+						}
+						c
+						{	
+							
+							if (!compareAll(data_table)) {
+								printf("Error: Expressions are not all of the same type.\n");
+								exit(EXIT_FAILURE);
+							} 
+							else {
+								
+								expr_count=0;
+								clearTable(data_table);
+							}
+						}
+						c
+						{
+
+							if(strcmp($2, "int") == 0)
+								{
+									if(strcmp($5, "INT_NUM") != 0)
+										{
+											fprintf(stderr, "Error: Type mismatch\n");
+											exit(EXIT_FAILURE);
+										}
+								}
+							else if(strcmp($2, "double") == 0)
+								{
+									if(strcmp($5, "DOUBLE_NUM") != 0)
+										{
+											fprintf(stderr, "Error: Type mismatch\n");
+											exit(EXIT_FAILURE);
+										}
+								}
+							else if(strcmp($2, "char") == 0)
+								{
+									if(strcmp($5, "CHAR_VAR") != 0)
+										{
+											fprintf(stderr, "Error: Type mismatch\n");
+											exit(EXIT_FAILURE);
+										}
+								}
+							else if(strcmp($2, "boolean") == 0)
+								{
+									if(strcmp($5, "BOOLEAN") != 0)
+										{
+											fprintf(stderr, "Error: Type mismatch\n");
+											exit(EXIT_FAILURE);
+										}
+								}
+							else if(strcmp($2, "String") == 0)
+								{
+									if(strcmp($5, "STRING_VAR") != 0)
+										{
+											fprintf(stderr, "Error: Type mismatch\n");
+											exit(EXIT_FAILURE);
+										}
+								}
+						
+						}
+						
                                                 ;
 
 
@@ -491,6 +676,16 @@ method_declaration: method_modifier return_type variable LEFT_BRACKET parameters
 	{	
 	add_method($1, $2, $3);
 	var_id_count = var_id_count - 1;
+
+
+	for (int i = 0; i < 100; i++) {
+		if (strcmp(id_table[i].modifier, "method") == 0)
+		{
+        		strcpy(id_table[i].name, "");
+			strcpy(id_table[i].modifier, "");
+		}
+    	}
+
 	}
 	;
 
