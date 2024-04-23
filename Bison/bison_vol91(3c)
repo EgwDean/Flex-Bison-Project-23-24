@@ -26,13 +26,6 @@ typedef struct {
     char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } ExprEntry, DeclaredVar;
 
-// Creating a table of normal_types and calling it "data_table"
-ExprEntry data_table[MAX_EXPR];
-int expr_count = 0;
-
-DeclaredVar declaredVar_table[MAX_EXPR];
-int var_count = 0;
-
 
 //Data structure for a method
 typedef struct {
@@ -41,9 +34,6 @@ typedef struct {
 	char method_modifier[256];
 } M_call;
 
-
-M_call m_table[100];
-int m_count = 0;
 
 typedef struct {
 	char modifier[256];
@@ -56,6 +46,26 @@ typedef struct {
 } Extra_var;
 
 
+typedef struct {
+	char name[256];
+	char value[50];
+} Assign_record;
+
+
+
+// Creating a table of normal_types and calling it "data_table"
+ExprEntry data_table[MAX_EXPR];
+int expr_count = 0;
+
+
+DeclaredVar declaredVar_table[MAX_EXPR];
+int var_count = 0;
+
+
+M_call m_table[100];
+int m_count = 0;
+
+
 Var_check id_table[100];
 int id_count = 0;
 
@@ -64,18 +74,11 @@ Extra_var ex_table[100];
 int ex_count = 0;
 
 
-
-typedef struct {
-	char name[256];
-	char value[50];
-} Assign_record;
-
 Assign_record assign_table[100];
 int ass_count = 0;
 
 
-
-
+// Function to add a variable with its INT_NUM or DOUBLE_NUM assignment to the assign_table
 void add_assign(char *name, char *value) {
 	
 	if (ass_count < 100) {
