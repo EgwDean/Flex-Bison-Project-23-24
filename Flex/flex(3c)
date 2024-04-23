@@ -67,7 +67,7 @@ char numval[50];         // Variable to store yytext from INT_NUM and DOUBLE_NUM
 "-" { printf("%s", yytext); return MINUS; }
 "\." { printf("%s", yytext); return DOT; }
 \'[^\']\' { printf("%s", yytext); yylval.str = strdup("CHAR_VAR"); return CHAR_VAR; }
-\'\\n\' { printf("%s", yytext); yylval.str = strdup("STRING_VAR"); return CHAR_VAR; }
+\'\\n\' { printf("%s", yytext); yylval.str = strdup("CHAR_VAR"); return CHAR_VAR; }
 \"[^\"]*\" { printf("%s", yytext); yylval.str = strdup("STRING_VAR"); return STRING_VAR; }
 [A-Z_][a-zA-Z0-9_]*   { printf("%s", yytext); return CLASS_NAME; }
 [a-zA-Z_][a-zA-Z0-9_]*   { printf("%s", yytext); yylval.str = strdup(yytext); return VAR; }
