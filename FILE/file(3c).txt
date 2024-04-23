@@ -13,19 +13,14 @@ public double result;
 
 	Private void main() {
 
- 
-
 	int bob = 5;
 
 	result = 7 + 5 * 5 / 4;
+	
 	bob = 1;
-
 	x = 1;
-
 	y = 2;
-
 	z = 3;
-
 	l = 4;
 
 	//n = 0;
