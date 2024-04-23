@@ -13,11 +13,11 @@ public double result;
 
 	Private void main() {
 
- result = 7 + 5 * 5 / 4;
+ 
 
 	int bob = 5;
 
-
+	result = 7 + 5 * 5 / 4;
 	bob = 1;
 
 	x = 1;
