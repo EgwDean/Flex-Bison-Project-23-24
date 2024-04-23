@@ -23,4 +23,4 @@ int o;
 	bob = 7;      //Public 'bob' does not exist!  
 
      .......
-<p><strong>&#x2022;&nbsp; Δοκίμασε να τρέξεις το bison(3b) και με τα files 3a, 2b, 1b για να δεις οτι μαλακιζεται </strong></p>
+<p><strong>&#x2022;&nbsp; Δοκίμασε να τρέξεις το bison(3b) και με τα files 3a, 2b, 1b για να δεις οτι μαλακίζεται </strong></p>
