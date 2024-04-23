@@ -62,7 +62,7 @@ int ex_count = 0;
 
 void add_id(char *modifier, char *name) {
 	
-	if (id_count < 100) {
+	if (id_count < 1000) {
         strcpy(id_table[id_count].name, name);
 	strcpy(id_table[id_count].modifier, modifier);
         id_count++;
@@ -74,7 +74,7 @@ void add_id(char *modifier, char *name) {
 
 void add_extra(char *name) {
 	
-	if (ex_count < 100) {
+	if (ex_count < 1000) {
         strcpy(ex_table[ex_count].name, name);
         ex_count++;
     } else {
