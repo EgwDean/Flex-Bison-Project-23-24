@@ -1,3 +1,4 @@
+
 //This is a top comment 
 public class Germanios {
 
@@ -30,7 +31,6 @@ public class Germanios {
 
 			x = 1.55d;
 
-			a = 'asd';
 
 			// x = 'a';
 		
@@ -43,15 +43,14 @@ public class Germanios {
 		
 			main2();
 
-			b = 'lala';
-
+			
 			main3();
 
 			main4();
 
 			//main10();
 
-			w = "asd";
+			w = "asd";      // throws error because of bug
 	
 			return 1;
 		}
@@ -67,7 +66,7 @@ public class Germanios {
 
 			boolean k = true;
 
-			k = false;
+			k = false;    // throws error because of bug
 
 			// k = 1;
 
