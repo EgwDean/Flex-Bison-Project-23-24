@@ -838,7 +838,7 @@ operations:   operations PLUS operations  {double temp; char *endptr1; char *end
 			| operations MUL operations   {double temp; char *endptr; temp = strtod($1, &endptr) * strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| operations DIV operations   {double temp; char *endptr; temp = strtod($1, &endptr) / strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| num 			      { strcpy($$, numval); }            /*store yytext to num*/ 
-			| variable            { strcpy($$, findAssValue($$)); }
+			| variable                    { strcpy($$, findAssValue($$)); }
 			;
 
 
