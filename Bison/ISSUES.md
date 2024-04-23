@@ -20,4 +20,6 @@ int o;
 	Private void main() {
 	
 	int bob = 5;
-	bob = 7;      //Public 'bob' does not exist!       
+	bob = 7;      //Public 'bob' does not exist!  
+
+     .......
