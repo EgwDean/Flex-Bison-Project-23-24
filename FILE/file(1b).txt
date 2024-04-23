@@ -3,7 +3,7 @@ public class Germanios {   //big class
 
 
 //Single Declarations
-int x;
+private int x;
 double x;
 char x;
 String x;
