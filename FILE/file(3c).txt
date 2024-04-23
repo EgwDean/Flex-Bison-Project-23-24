@@ -1,11 +1,90 @@
-public class Germanios3 {
+//This file is for testing scopes of variables
+public class Germanios {
 
 
-Public int main2() { 
+private int x;
 
- x = 7 + 5 * 5 / 4;
+public int y,z;
 
-return 0;
+int l = 5;
+
+int o;
+public double result;
+
+	Private void main() {
+
+ result = 7 + 5 * 5 / 4;
+
+	int bob = 5;
+
+
+	bob = 1;
+
+	x = 1;
+
+	y = 2;
+
+	z = 3;
+
+	l = 4;
+
+	//n = 0;
+
+	return 1;
+	}
+
+
+	Private void main10() {
+
+	//bob = 10;
+
+	return 1;
+	}
+
+
+	public class C {
+
+		Private void main2() {
+	
+		
+		x = 1;
+
+		//bob = 5;
+
+		y = 2;
+
+		z = 3;
+
+		l = 4;
+
+		
+
+		return 1;
+		}
+
+
+	}
+
 }
 
+
+public class B {
+
+
+		Public void method2() {
+		
+
+		y = 5;
+	
+		l = 2;
+
+		//x = 1;
+
+		//bob = 5;
+			
+		return 1;
+		}
+
 }
+
+/*hehe*/
