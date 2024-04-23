@@ -557,6 +557,9 @@ arguments: variable | variable COMMA arguments | normal_type | normal_type COMMA
 expression: member_access | method_call ;
 
 
+
+//operations and num rules are of type <str>. To perform operations i convert string values to double and then convert back to string again to store the result in $$
+
 operations:   operations PLUS operations  {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) + strtod($3, &endptr2); sprintf($$, "%lf", temp);} 
 			| operations MINUS operations {double temp; char *endptr; temp = strtod($1, &endptr) - strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| operations MUL operations   {double temp; char *endptr; temp = strtod($1, &endptr) * strtod($3, &endptr); sprintf($$, "%lf", temp);}
