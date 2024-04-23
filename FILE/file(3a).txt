@@ -1,5 +1,5 @@
+//This file is for testing whether variables and methods used exist
 
-//This is a top comment 
 public class Germanios {
 
 	int x = 1, y = 2, z = 3;
