@@ -364,10 +364,23 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 					if (strcmp(ex_table[i].name, "") != 0) {
 						add_id($2, ex_table[i].name);
 					}
-				}			
+				}
+				
+				}
+
+
+				if(var_id_count > 0) {
+				add_id("method", $4);
+				
+				for (int i = 0; i < 100; i++){
+					if (strcmp(ex_table[i].name, "") != 0) {
+						add_id("method", ex_table[i].name);
+					}
+				}
+				
+				}
 
 				clear_extra();
-				}
 
 			}
 			
@@ -387,11 +400,24 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 								if (strcmp(ex_table[b].name, "") != 0) {
 								add_id($2, ex_table[b].name);
 								}
-							}			
-
-							clear_extra();
 							}
 
+							}
+
+
+
+							if(var_id_count > 0) {
+							add_id("method", $4);
+				
+								for (int i = 0; i < 100; i++){
+									if (strcmp(ex_table[i].name, "") != 0) {
+									add_id("method", ex_table[i].name);
+									}
+								}
+				
+							}
+
+							clear_extra();
 
 							 
 						}
@@ -487,6 +513,16 @@ method_declaration: method_modifier return_type variable LEFT_BRACKET parameters
 	{	
 	add_method($1, $2, $3);
 	var_id_count = var_id_count - 1;
+
+
+	for (int i = 0; i < 100; i++) {
+		if (strcmp(id_table[i].modifier, "method") == 0)
+		{
+        		strcpy(id_table[i].name, "");
+			strcpy(id_table[i].modifier, "");
+		}
+    	}
+
 	}
 	;
 
