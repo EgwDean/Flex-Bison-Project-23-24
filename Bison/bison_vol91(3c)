@@ -63,6 +63,54 @@ int id_count = 0;
 Extra_var ex_table[100];
 int ex_count = 0;
 
+
+
+typedef struct {
+	char name[256];
+	char value[50];
+} Assign_record;
+
+Assign_record assign_table[100];
+int ass_count = 0;
+
+
+
+
+void add_assign(char *name, char *value) {
+	
+	if (ass_count < 100) {
+        strcpy(assign_table[ass_count].name, name);
+	strcpy(assign_table[ass_count].value, value);
+        ass_count++;
+    } else {
+        fprintf(stderr, "Error: table full\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+
+
+// Function to search for the most recently assigned value to a variable (bottom up)
+char *findAssValue(char *name) {
+    char foundValue[256] = "";
+    int found = 0;
+
+    // Start searching from the end of the array
+    for (int i = ass_count - 1; i >= 0; i--) {
+        if (strcmp(name, assign_table[i].name) == 0) {
+            found = 1;
+			return assign_table[i].value;  // Store the found variable's name
+            
+        }
+    }
+    if(!found) {
+	fprintf(stderr, "Variable '%s' must have an assigned integer or double value!\n", name);
+	exit(EXIT_FAILURE);
+    }	
+}
+
+
+
 void add_id(char *modifier, char *name) {
 	
 	if (id_count < 100) {
@@ -395,6 +443,14 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 						| c variable_modifier expr_type variable EQUAL normal_type extra_assigned_variables QMARK c
 						{		
  							
+							 if (strcmp($6, "INT_NUM") == 0 | strcmp($6, "DOUBLE_NUM") == 0){
+			
+							 add_assign($4, numval);
+			
+							 }
+
+							
+							
 							// Add the first variable and its expression to the symbol table
 							addVar($4, $6);
 							add_declaredVar($4, $6);
@@ -550,6 +606,12 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 						| c expr_type variable EQUAL normal_type extra_assigned_variables QMARK c
 						{		
  							
+							 if (strcmp($5, "INT_NUM") == 0 | strcmp($5, "DOUBLE_NUM") == 0){
+			
+								add_assign($3, numval);
+			
+							 }
+	
 							// Add the first variable and its expression to the symbol table
 							addVar($3, $5);
 							add_declaredVar($3, $5);
@@ -659,11 +721,18 @@ extra_variables: | COMMA variable extra_variables
 extra_assigned_variables: | COMMA variable EQUAL normal_type extra_assigned_variables 
                           {
 					
-					// Add extra variables and their assigned expressions to data_table 
-					addVar($2, $4);
-					add_declaredVar($2, $4);
+								if (strcmp($4, "INT_NUM") == 0 | strcmp($4, "DOUBLE_NUM") == 0){
+			
+									add_assign($2, numval);
+			
+								}
+					
+					
+								// Add extra variables and their assigned expressions to data_table 
+								addVar($2, $4);
+								add_declaredVar($2, $4);
 				
-					add_extra($2);	
+								add_extra($2);	
 					
                           };
 
@@ -707,32 +776,38 @@ command: assignment | do_loop | for_loop | switch_case | break | method_call QMA
 assignment: VAR EQUAL expression QMARK 
 	    | VAR EQUAL operations QMARK 
 	    { 
-		// Print result of operation as a double
-		char *eptr;
-		printf("Value of %s is:  %lf \n", $1, strtod($3, &eptr)); 
+			// Print result of operation as a double
+			char *eptr;
+			printf("Value of %s is:  %lf \n", $1, strtod($3, &eptr)); 
 	    }
-
+		
 	    | VAR EQUAL normal_type QMARK
 	    {
+            if (strcmp($3, "INT_NUM") == 0 | strcmp($3, "DOUBLE_NUM") == 0){
+			
+					add_assign($1, numval);
+			
+			}
 
+			
+			check_var_private($1);
 
-	check_var_private($1);
+			char* foundVariableType = searchVariable($1);
+			if(strcmp(foundVariableType, "") == 0)
+				{
+					fprintf(stderr, "Error: Undeclared variable\n");
+					exit(EXIT_FAILURE);
+				}
+			else
+				{
+						if(strcmp(foundVariableType, $3) != 0)
+							{
+								fprintf(stderr, "Error: Type mismatch\n");
+								exit(EXIT_FAILURE);
+							}
+				}
+		};
 
-	char* foundVariableType = searchVariable($1);
-	if(strcmp(foundVariableType, "") == 0)
-		{
-			fprintf(stderr, "Error: Undeclared variable\n");
-			exit(EXIT_FAILURE);
-		}
-	else
-		{
-				if(strcmp(foundVariableType, $3) != 0)
-					{
-						fprintf(stderr, "Error: Type mismatch\n");
-						exit(EXIT_FAILURE);
-					}
-		}
-};
 
 member_access: variable DOT variable LEFT_BRACKET arguments RIGHT_BRACKET
 		| variable DOT variable ;
@@ -759,7 +834,8 @@ operations:   operations PLUS operations  {double temp; char *endptr1; char *end
 			| operations MINUS operations {double temp; char *endptr; temp = strtod($1, &endptr) - strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| operations MUL operations   {double temp; char *endptr; temp = strtod($1, &endptr) * strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| operations DIV operations   {double temp; char *endptr; temp = strtod($1, &endptr) / strtod($3, &endptr); sprintf($$, "%lf", temp);}
-			| num 			      { strcpy($$, numval); }    /*store yytext to num*/ 
+			| num 			      { strcpy($$, numval); }            /*store yytext to num*/ 
+			| variable            { strcpy($$, findAssValue($$)); }
 			;
 
 
