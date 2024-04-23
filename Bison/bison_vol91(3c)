@@ -14,10 +14,10 @@ extern char numval[50];    // Variable to store yytext from INT_NUM and DOUBLE_N
 
 
 // Maximum number of normal_types (adjust as needed)
-#define MAX_EXPR 100
+#define MAX_SIZE 1000
 
 int declaration_flag = 0;
-char public_name[256][MAX_EXPR];
+char public_name[256][MAX_SIZE];
 int var_num = 0;
 
 // Data structure to store variable name & expression type
@@ -54,34 +54,34 @@ typedef struct {
 
 
 // Creating a table of normal_types and calling it "data_table"
-ExprEntry data_table[MAX_EXPR];
+ExprEntry data_table[MAX_SIZE];
 int expr_count = 0;
 
 
-DeclaredVar declaredVar_table[MAX_EXPR];
+DeclaredVar declaredVar_table[MAX_SIZE];
 int var_count = 0;
 
 
-M_call m_table[100];
+M_call m_table[MAX_SIZE];
 int m_count = 0;
 
 
-Var_check id_table[100];
+Var_check id_table[MAX_SIZE];
 int id_count = 0;
 
 
-Extra_var ex_table[100];
+Extra_var ex_table[MAX_SIZE];
 int ex_count = 0;
 
 
-Assign_record assign_table[100];
+Assign_record assign_table[MAX_SIZE];
 int ass_count = 0;
 
 
 // Function to add a variable with its INT_NUM or DOUBLE_NUM assignment to the assign_table
 void add_assign(char *name, char *value) {
 	
-	if (ass_count < 100) {
+	if (ass_count < MAX_SIZE) {
         strcpy(assign_table[ass_count].name, name);
 	strcpy(assign_table[ass_count].value, value);
         ass_count++;
@@ -116,7 +116,7 @@ char *findAssValue(char *name) {
 
 void add_id(char *modifier, char *name) {
 	
-	if (id_count < 100) {
+	if (id_count < MAX_SIZE) {
         strcpy(id_table[id_count].name, name);
 	strcpy(id_table[id_count].modifier, modifier);
         id_count++;
@@ -128,7 +128,7 @@ void add_id(char *modifier, char *name) {
 
 void add_extra(char *name) {
 	
-	if (ex_count < 100) {
+	if (ex_count < MAX_SIZE) {
         strcpy(ex_table[ex_count].name, name);
         ex_count++;
     } else {
@@ -141,7 +141,7 @@ void add_extra(char *name) {
 
 void clear_extra() {
 
-	for(int i = 0; i < 100; i++){
+	for(int i = 0; i < MAX_SIZE; i++){
 		strcpy(ex_table[ex_count].name, "");
 	}
 	
@@ -150,7 +150,7 @@ void clear_extra() {
 
 
 void clear_var_private() {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < MAX_SIZE; i++) {
 	if (strcmp(id_table[i].modifier, "private") == 0)
 	{
         strcpy(id_table[i].name, "");
@@ -163,7 +163,7 @@ void clear_var_private() {
 void check_var_private(char *name) {
     int flag = 0;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < MAX_SIZE; i++) {
         if (strcmp(id_table[i].name, name) == 0) {
             flag = 1;
             break; 
@@ -180,7 +180,7 @@ void check_var_private(char *name) {
 // Adds methods to the table
 void add_method(char *modifier, char *type, char *name) {
 	
-	if (m_count < 100) {
+	if (m_count < MAX_SIZE) {
         strcpy(m_table[m_count].method_name, name);
 	strcpy(m_table[m_count].method_type, type);
 	strcpy(m_table[m_count].method_modifier, modifier);
@@ -195,7 +195,7 @@ void add_method(char *modifier, char *type, char *name) {
 void check_method(const char *name) {
     int flag = 0;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < MAX_SIZE; i++) {
         if (strcmp(m_table[i].method_name, name) == 0) {
             flag = 1;
             break; 
@@ -210,7 +210,7 @@ void check_method(const char *name) {
 
 // Removes the private methods from the table
 void clear_private_methods() {
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < MAX_SIZE; ++i) {
 	if (strcmp(m_table[i].method_modifier, "Private") == 0)
 	{
         strcpy(m_table[i].method_name, "");
@@ -226,7 +226,7 @@ void clear_private_methods() {
 
 // Function to add a normal_type to the normal_types table
 void addVar(char *name, char *expr_type) {
-    if (expr_count < MAX_EXPR) {
+    if (expr_count < MAX_SIZE) {
         strcpy(data_table[expr_count].name, name);
         strcpy(data_table[expr_count].expr_type, expr_type);
         expr_count++;
@@ -239,7 +239,7 @@ void addVar(char *name, char *expr_type) {
 
 // Function to add a variable to the declared variables table
 void add_declaredVar(char *name, char *expr_type) {
-    if (expr_count < MAX_EXPR) {
+    if (expr_count < MAX_SIZE) {
         strcpy(declaredVar_table[var_count].name, name);
         strcpy(declaredVar_table[var_count].expr_type, expr_type);
         var_count++;
@@ -252,7 +252,7 @@ void add_declaredVar(char *name, char *expr_type) {
 
 // Function to clear the normal_types table
 void clearTable(ExprEntry *data_table){
-	 for (int i = 1; i < MAX_EXPR; i++) {  
+	 for (int i = 1; i < MAX_SIZE; i++) {  
 		if (strcmp(data_table[i].expr_type, "") != 0){ 
 			 strcpy(data_table[i].expr_type, "");
 		}
@@ -267,7 +267,7 @@ int compareAll(ExprEntry *data_table) {
 	char *firstValue = data_table[0].expr_type;
 
 	// Iterate over the remaining entries and compare their values
-	for (int i = 1; i < MAX_EXPR; i++) {
+	for (int i = 1; i < MAX_SIZE; i++) {
 		
 		if (strcmp(data_table[i].expr_type, "") != 0){
 			
@@ -838,7 +838,7 @@ operations:   operations PLUS operations  {double temp; char *endptr1; char *end
 			| operations MUL operations   {double temp; char *endptr; temp = strtod($1, &endptr) * strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| operations DIV operations   {double temp; char *endptr; temp = strtod($1, &endptr) / strtod($3, &endptr); sprintf($$, "%lf", temp);}
 			| num 			      { strcpy($$, numval); }            /*store yytext to num*/ 
-			| variable                    { strcpy($$, findAssValue($$)); }
+			| variable            { strcpy($$, findAssValue($$)); }
 			;
 
 
