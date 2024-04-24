@@ -21,7 +21,7 @@ public double result4;
 	result2 = 7 * (5 + 2) ;       //Value of result2 is:  49.000000
  	result3 = (7 + 5) * 2 ;       //Value of 24.000000 is:  24.000000
 
-	result4 = bob + (l * 2);
+	result4 = bob + (l * 2);     //Value of result4 is:  20.000000
 
 
 	bob = 1;
