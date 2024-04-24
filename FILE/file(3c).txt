@@ -7,15 +7,18 @@ public int y,z;
 int o;
 
 int l=5;
-public double result;
+public double result1;
+public double result2;
+public double result3;
 
 	Private void main() {
 
 	int bob;
 	bob=7;
                 
-	result = bob + l * 5 / 4;
-	
+	result1 = bob + l * 5 / 4;
+	result2 = 7 * (5 + 2) ;
+ 	result3 = (7 + 5) * 2 ;
 	bob = 1;
 	x = 1;
 	y = 2;
