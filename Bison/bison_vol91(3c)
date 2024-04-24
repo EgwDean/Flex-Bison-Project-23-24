@@ -332,6 +332,8 @@ void yyerror(char *s) {
 
 %left PLUS MINUS
 %left MUL DIV 
+%nonassoc LEFT_BRACKET RIGHT_BRACKET
+
 
 %type <str> variable
 %type <str> expr_type
@@ -833,13 +835,14 @@ expression: member_access | method_call ;
 
 //operations and num rules are of type <str>. To perform operations i convert string values to double and then convert back to string again to store the result in $$
 
-operations:   operations PLUS operations  {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) + strtod($3, &endptr2); sprintf($$, "%lf", temp);} 
+operations:   LEFT_BRACKET operations RIGHT_BRACKET{strcpy($$, $2);}
+			| operations PLUS operations  {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) + strtod($3, &endptr2); sprintf($$, "%lf", temp);} 
 			| operations MINUS operations {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) - strtod($3, &endptr2); sprintf($$, "%lf", temp);}
 			| operations MUL operations   {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) * strtod($3, &endptr2); sprintf($$, "%lf", temp);}
 			| operations DIV operations   {double temp; char *endptr1; char *endptr2; temp = strtod($1, &endptr1) / strtod($3, &endptr2); sprintf($$, "%lf", temp);}
 			| num 			      { strcpy($$, numval); }            /*store yytext to num*/ 
 			| variable            { strcpy($$, findAssValue($$)); }
-			;
+			| ;
 
 
 do_loop: DO c LEFT_BRACE commands RIGHT_BRACE c  WHILE LEFT_BRACKET conditions RIGHT_BRACKET QMARK ;
