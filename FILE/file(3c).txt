@@ -10,6 +10,7 @@ int l=5;
 public double result1;
 public double result2;
 public double result3;
+public double result4;
 
 	Private void main() {
 
@@ -19,6 +20,10 @@ public double result3;
 	result1 = bob + l * 5 / 4;    //Value of result1 is:  13.250000
 	result2 = 7 * (5 + 2) ;       //Value of result2 is:  49.000000
  	result3 = (7 + 5) * 2 ;       //Value of 24.000000 is:  24.000000
+
+	result4 = bob + (l * 2);
+
+
 	bob = 1;
 	x = 1;
 	y = 2;
