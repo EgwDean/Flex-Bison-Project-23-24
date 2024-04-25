@@ -25,7 +25,7 @@ public double result6;
 	result5 = (bob + l) * 2 ; 
 
 //Uncomment to raise errors
-result6 = (temperature + l) * 2 ; 
+//result6 = (temperature + l) * 2 ; 
 
 
 	bob = 1;
