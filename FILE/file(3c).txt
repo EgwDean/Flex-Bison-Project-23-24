@@ -11,18 +11,18 @@ public double result1;
 public double result2;
 public double result3;
 public double result4;
+public double result5;
 
 	Private void main() {
 
 	int bob;
 	bob=7;
                 
-	result1 = bob + l * 5 / 4;    //Value of result1 is:  13.250000
-	result2 = 7 * (5 + 2) ;       //Value of result2 is:  49.000000
- 	result3 = (7 + 5) * 2 ;       //Value of 24.000000 is:  24.000000
-
-	result4 = bob + (l * 2);     //Value of result4 is:  20.000000
-
+	result1 = bob + l * 5 / 4;    
+	result2 = 7 * (5 + 2) ;       
+ 	result3 = (7 + 5) * 2 ;       
+	result4 = bob * (l + 2);     
+	result5 = (bob + l) * 2 ; 
 
 	bob = 1;
 	x = 1;
