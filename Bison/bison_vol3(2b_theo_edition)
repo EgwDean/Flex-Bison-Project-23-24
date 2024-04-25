@@ -114,7 +114,7 @@ parameters: data_type variable
 	|;
 
 
-method_block: variable_declarations commands ;
+method_block: c variable_declarations c commands c ;
 
 
 commands: c command c | c command c commands | ;
