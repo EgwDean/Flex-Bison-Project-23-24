@@ -21,6 +21,10 @@ void yyerror(const char *s) {
 %token SINGLE_COMMENT MULTILINE_COMMENT
 
 
+%union {
+ char *str;
+}
+
 %%
 
 program: c public_class c
