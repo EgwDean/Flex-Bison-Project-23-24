@@ -106,7 +106,7 @@ char *findAssValue(char *name) {
         }
     }
     if(!found) {
-	fprintf(stderr, "Variable '%s' must have an assigned integer or double value!\n", name);
+	fprintf(stderr, "  Variable '%s' must have an assigned integer or double value!\n", name);
 	exit(EXIT_FAILURE);
     }	
 }
