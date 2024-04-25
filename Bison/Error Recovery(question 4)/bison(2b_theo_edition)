@@ -1,4 +1,3 @@
-
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,11 +13,6 @@ void yyerror(const char *s) {
 
 %}
 
-%union {
- char *str;
-}
-
-
 %token PUBLIC_CLASS CLASS_NAME LEFT_BRACE RIGHT_BRACE PUBLIC PRIVATE QMARK VAR 
 %token INT DOUBLE CHAR BOOLEAN STRING EQUAL NEW LEFT_BRACKET RIGHT_BRACKET VOID M_PUBLIC M_PRIVATE
 %token COMMA RETURN INT_NUM DOUBLE_NUM CHAR_VAR STRING_VAR TRUE FALSE DOT
@@ -26,6 +20,10 @@ void yyerror(const char *s) {
 %token DOUBLE_DOT DEFAULT BREAK PRINT IF ELSE ELSE_IF
 %token SINGLE_COMMENT MULTILINE_COMMENT
 
+
+%union {
+ char *str;
+}
 
 %%
 
@@ -116,7 +114,7 @@ parameters: data_type variable
 	|;
 
 
-method_block: variable_declarations commands ;
+method_block: c variable_declarations c commands c ;
 
 
 commands: c command c | c command c commands | ;
