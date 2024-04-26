@@ -92,7 +92,7 @@ void add_assign(char *name, char *value) {
 
 
 
-// Function to search (bottom up) for the most recently assigned value (of type INT_NUM or DOUBLE_NUM) to a variable 
+// Function to search (bottom up) for the most recently assigned value (of type INT_NUM or DOUBLE_NUM) to a variable --> used in <opearations> rule 
 char *findOperationValue(char *name) {
     char foundValue[256] = "";
     int found = 0;
