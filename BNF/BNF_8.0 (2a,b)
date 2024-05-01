@@ -23,19 +23,19 @@
 
 
 <char_declaration> ::= <variable_modifier> "char" <identifier> “=” <char_literal> <extra_chars_a>
-		| <variable_modifier> "char" <identifier> “=” <char_literal> <extra_chars>
+		| <variable_modifier> "char" <identifier> <extra_chars>
 
 
 <double_declaration> ::= <variable_modifier> "double" <identifier> “=” <double_literal> <extra_doubles_a>
-		| <variable_modifier> "double" <identifier> “=” <double_literal> <extra_doubles>
+		| <variable_modifier> "double" <identifier> <extra_doubles>
 
 
 <boolean_declaration> ::= <variable_modifier> "boolean" <identifier> “=” <boolean_literal> <extra_booleans_a>
-		| <variable_modifier> "boolean" <identifier> “=” <boolean_literal> <extra_booleans>
+		| <variable_modifier> "boolean" <identifier> <extra_booleans>
 
 
 <string_declaration> ::= <variable_modifier> "string" <identifier> “=” <string_literal> <extra_strings_a>
-		| <variable_modifier> "string" <identifier> “=” <string_literal> <extra_strings>
+		| <variable_modifier> "string" <identifier> <extra_strings>
 
 
 <extra_ints_a> ::= <extra_int_a> | <extra_int_a> <extra_ints_a>
