@@ -12,7 +12,7 @@ File:  file(3b_method_example).txt is for testing with the parser:  bison_3b
 
 File:  file(3b_variable_example).txt is for testing with the parser:  bison_3b
 
-File:  file(3c).txt  is for testing with the parser:   bison(all).y
+File:  file(3c).txt  is for testing with the parser:   parser.y
 
 <br><br>
 
