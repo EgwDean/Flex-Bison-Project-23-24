@@ -22,19 +22,15 @@ char numval[50];         // Variable to store yytext from INT_NUM and DOUBLE_NUM
 [\n]    { line_number++; }   // Update line number on newline
 
 "public class"  { printf("%s", yytext); method_count++; return PUBLIC_CLASS; }
-
 "int" { printf("%s", yytext); yylval.str = strdup(yytext); return INT; }
 "double" { printf("%s", yytext); yylval.str = strdup(yytext); return DOUBLE; }
 "char" { printf("%s", yytext); yylval.str = strdup(yytext); return CHAR; }
 "boolean" { printf("%s", yytext); yylval.str = strdup(yytext); return BOOLEAN; }
 "String" { printf("%s", yytext); yylval.str = strdup(yytext); return STRING; }
-
 "private" { printf("%s", yytext); yylval.str = strdup(yytext); return PRIVATE; }
 "public" { printf("%s", yytext); yylval.str = strdup(yytext); return PUBLIC; }
-
 "Private" { printf("%s", yytext); var_id_count++; yylval.str = strdup(yytext); return M_PRIVATE; }
 "Public" { printf("%s", yytext); var_id_count++; yylval.str = strdup(yytext); return M_PUBLIC; }
-
 "void" { printf("%s", yytext); yylval.str = strdup(yytext); return VOID; }
 "return" { printf("%s", yytext); return RETURN; }
 "true" { printf("%s", yytext); yylval.str = strdup("BOOLEAN"); return TRUE; }
