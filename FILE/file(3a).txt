@@ -1,5 +1,4 @@
 //This file is for testing whether variables and methods used exist
-
 public class Germanios {
 
 	int x = 1, y = 2, z = 3;
