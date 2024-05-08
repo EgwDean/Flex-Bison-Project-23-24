@@ -76,21 +76,21 @@ int ass_count = 0;
 
 
 //Function Signatures
-void addVar(char *name, char *expr_type)
-int compareAll(ExprEntry *data_table)
-void clearTable(ExprEntry *data_table)
-void add_method(char *modifier, char *type, char *name)
-void check_method(const char *name) 
-void add_declaredVar(char *name, char *expr_type) 
-char *searchVariable(char *varName) 
-void add_id(char *modifier, char *name)
-void add_extra(char *name)
-void clear_extra()
-void check_var_private(char *name)
-void clear_var_private() 
-void clear_private_methods() 
-void add_assign(char *name, char *value)
-char *findOperationValue(char *name)
+void addVar(char *name, char *expr_type);
+int compareAll(ExprEntry *data_table);
+void clearTable(ExprEntry *data_table);
+void add_method(char *modifier, char *type, char *name);
+void check_method(const char *name);
+void add_declaredVar(char *name, char *expr_type);
+char *searchVariable(char *varName);
+void add_id(char *modifier, char *name);
+void add_extra(char *name);
+void clear_extra();
+void check_var_private(char *name);
+void clear_var_private(); 
+void clear_private_methods(); 
+void add_assign(char *name, char *value);
+char *findOperationValue(char *name);
 
 
 
