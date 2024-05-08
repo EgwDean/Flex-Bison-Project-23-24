@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_SIZE 1000   // Maximum number of normal_types (adjust as needed)
 
 extern int yylex();
 extern FILE* yyin;
@@ -11,10 +12,9 @@ extern int method_count;
 extern int var_id_count;
 extern char numval[50];    // Variable to store yytext from INT_NUM and DOUBLE_NUM
 
-#define MAX_SIZE 1000   // Maximum number of normal_types (adjust as needed)
-
 int declaration_flag = 0;
 int var_num = 0;
+
 
 
 
