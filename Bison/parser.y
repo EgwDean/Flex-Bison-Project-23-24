@@ -11,16 +11,16 @@ extern int method_count;
 extern int var_id_count;
 extern char numval[50];    // Variable to store yytext from INT_NUM and DOUBLE_NUM
 
-
-// Maximum number of normal_types (adjust as needed)
-#define MAX_SIZE 1000
+#define MAX_SIZE 1000   // Maximum number of normal_types (adjust as needed)
 
 int declaration_flag = 0;
 int var_num = 0;
 
 
-// Data structure to store variable name & expression type
-typedef struct {
+
+//Structs
+
+typedef struct {		//Data structure to store variable name & expression type
     char name[256];        		// Assuming maximum variable name length of 255 characters
     char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } ExprEntry, DeclaredVar;
@@ -52,32 +52,28 @@ typedef struct {
 
 
 
+//Tables
 
 ExprEntry data_table[MAX_SIZE];
 int expr_count = 0;
 
-
 DeclaredVar declaredVar_table[MAX_SIZE];
 int var_count = 0;
 
-
 char public_name[256][MAX_SIZE];
-
 
 M_call m_table[MAX_SIZE];
 int m_count = 0;
 
-
 Var_check id_table[MAX_SIZE];
 int id_count = 0;
-
 
 Extra_var ex_table[MAX_SIZE];
 int ex_count = 0;
 
-
 Assign_record assign_table[MAX_SIZE];
 int ass_count = 0;
+
 
 
 //Function Signatures
