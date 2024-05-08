@@ -16,8 +16,8 @@ extern char numval[50];    // Variable to store yytext from INT_NUM and DOUBLE_N
 #define MAX_SIZE 1000
 
 int declaration_flag = 0;
-char public_name[256][MAX_SIZE];
 int var_num = 0;
+
 
 // Data structure to store variable name & expression type
 typedef struct {
@@ -52,13 +52,16 @@ typedef struct {
 
 
 
-// Creating a table of normal_types and calling it "data_table"
+
 ExprEntry data_table[MAX_SIZE];
 int expr_count = 0;
 
 
 DeclaredVar declaredVar_table[MAX_SIZE];
 int var_count = 0;
+
+
+char public_name[256][MAX_SIZE];
 
 
 M_call m_table[MAX_SIZE];
@@ -75,6 +78,8 @@ int ex_count = 0;
 
 Assign_record assign_table[MAX_SIZE];
 int ass_count = 0;
+
+
 
 
 // Function to add a variable with its INT_NUM or DOUBLE_NUM assignment to the assign_table
