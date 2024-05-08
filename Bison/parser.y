@@ -22,7 +22,7 @@ int var_num = 0;
 
 typedef struct {		//Data structure to store variable name & expression type
     char name[256];        		// Assuming maximum variable name length of 255 characters
-    char expr_type[20];   	 	// Data type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
+    char expr_type[20];   	 	// Expression type: INT_NUM, DOUBLE_NUM, CHAR_VAR, STRING_VAR, BOOLEAN
 } ExprEntry, DeclaredVar;
 
 
