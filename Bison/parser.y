@@ -53,7 +53,6 @@ typedef struct {
 
 
 //Tables
-
 ExprEntry data_table[MAX_SIZE];
 int expr_count = 0;
 
