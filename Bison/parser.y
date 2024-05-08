@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_SIZE 1000   // Maximum number of normal_types (adjust as needed)
+#define MAX_SIZE 1000   //adjust as needed
 
 extern int yylex();
 extern FILE* yyin;
