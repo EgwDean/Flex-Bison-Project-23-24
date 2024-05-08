@@ -494,7 +494,7 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 
 
 							if(var_id_count == 0) {
-							add_id($2, $4); //Πεταει segmatation
+							add_id($2, $4); 
 				
 							for (int b = 0; b < 100; b++){
 								if (strcmp(ex_table[b].name, "") != 0) {
@@ -655,7 +655,7 @@ variable_declaration:   c variable_modifier expr_type variable extra_variables Q
 
 
 							if(var_id_count == 0) {
-							add_id("public", $3); //Πεταει segmatation
+							add_id("public", $3); 
 				
 							for (int b = 0; b < 100; b++){
 								if (strcmp(ex_table[b].name, "") != 0) {
