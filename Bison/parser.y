@@ -142,6 +142,7 @@ int compareAll(ExprEntry *data_table) {
 void clearTable(ExprEntry *data_table){
 	 for (int i = 1; i < MAX_SIZE; i++) {  
 		if (strcmp(data_table[i].expr_type, "") != 0){ 
+			 strcpy(data_table[i].name, "");
 			 strcpy(data_table[i].expr_type, "");
 		}
 	}
