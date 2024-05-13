@@ -35,9 +35,6 @@ boolean x;
 Obj obj = new Obj();
 
 
-// For now this works only with Theofrastos bison edition
-//int x = 12 + 5.4d / y * 3; 
-
 
 Public void main(int x, boolean z ) {
 
